@@ -163,7 +163,7 @@ int main() { // Função principal
     // ==================================================================
     printf("\n3- Atribuições de Valor e Expressão\n");
     printf("===================================================\n");
-    int a = 5; // Atribuição de valor
+    unsigned int a = 5; // Atribuição de valor
     int b = 10;
     int c = a + b; // Atribuição de expressão (soma de a e b)
     
@@ -199,7 +199,7 @@ int main() { // Função principal
     // Operadores Binários
     printf("\n4.2- Operadores Binários\n");
     printf("---------------------------------------------------\n");
-    a = 5; // binário: 0101
+    a = 5; // binário:  0101
     b = 10; // binário: 1010
 
     printf("a = 5, que é 0101 em binário\n");
@@ -219,7 +219,8 @@ int main() { // Função principal
     -Todos os bits de a são invertidos: ∼0101=1010.
     -O número resultante é tratado como um número em complemento de dois, então ele é interpretado como −6 em decimal.
     */
-    printf("~a (NOT): %d\n", ~a);
+   unsigned int z = ~a;
+    printf("~a (NOT): %lu\n", z);
     printf("Explicação: NOT 0101 é 1010, ou seja, -6 em decimal (complemento de dois)\n\n");
     
     printf("a << 1 (left shift): %d\n", a << 1);
