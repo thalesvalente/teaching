@@ -1,0 +1,47 @@
+{
+    "sistema_monitoramento_tensao": {
+        "inputs": ["0.5\n", "2.5\n", "3.5\n"],
+        "expected_outputs": ["Baixa\n", "Media\n", "Alta\n"]
+    },
+    "calculo_potencia": {
+        "inputs": ["2\n3\n", "3\n2\n"],
+        "expected_outputs": ["8.00\n", "9.00\n"]
+    },
+    "conversao_bases_numericas": {
+        "inputs": ["0\n", "5\n", "7\n", "8\n"],
+        "expected_outputs": ["000\n", "101\n", "111\n", "Invalido\n"]
+    },
+    "lei_ohm": {
+        "inputs": ["2\n3\n", "3\n2\n"],
+        "expected_outputs": ["6.00V\n", "6.00V\n"]
+    },
+    "simulador_espectro_frequencia": {
+        "inputs": ["0.5\n", "50\n", "150\n"],
+        "expected_outputs": ["Radio\n", "Micro-ondas\n", "Terahertz\n"]
+    },
+    "saida_neuronio_simples": {
+        "inputs": ["1\n1\n1\n", "2\n3\n1\n"],
+        "expected_outputs": ["2.00\n", "7.00\n"]
+    },
+    "identificacao_circuitos_logicos": {
+        "inputs": ["1\n", "2\n", "3\n", "4\n"],
+        "expected_outputs": [
+            "Circuito AND: Este circuito retorna 1 se ambas as entradas forem 1, caso contrário, retorna 0.\n", 
+            "Circuito OR: Este circuito retorna 1 se pelo menos uma das entradas for 1, caso contrário, retorna 0.\n",
+            "Circuito NOT: Este circuito inverte a entrada, retornando 0 se a entrada for 1 e 1 se a entrada for 0.\n",
+            "Invalido\n"
+        ]
+    },
+    "normalizacao_dados": {
+        "inputs": ["5\n0\n10\n", "10\n0\n20\n"],
+        "expected_outputs": ["0.50\n", "0.50\n"]
+    },
+    "catalogo_componentes_eletronicos": {
+        "inputs": ["1\n", "2\n", "3\n", "4\n"],
+        "expected_outputs": ["Resistor\n", "Capacitor\n", "Diodo\n", "Invalido\n"]
+    },
+    "classificacao_binaria_simples": {
+        "inputs": ["5\n4\n", "3\n4\n"],
+        "expected_outputs": ["Classe A\n", "Classe B\n"]
+    }
+}
