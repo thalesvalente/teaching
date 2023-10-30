@@ -1,0 +1,26 @@
+{
+    "inversao_de_strings": {
+        "inputs": ["hello\n"],
+        "expected_outputs": ["olleh\n"]
+    },
+    "contagem_de_vogais": {
+        "inputs": ["HelloWorld\n"],
+        "expected_outputs": ["3\n"]
+    },
+    "transformacao_para_maiusculas": {
+        "inputs": ["Hello\n"],
+        "expected_outputs": ["HELLO\n"]
+    },
+    "verificacao_de_palindromo": {
+        "inputs": ["madam\n"],
+        "expected_outputs": ["E um palindromo\n"]
+    },
+    "contagem_de_palavras": {
+        "inputs": ["Hello World from C\n"],
+        "expected_outputs": ["4\n"]
+    },
+    "capitalize": {
+        "inputs": ["hello world\n"],
+        "expected_outputs": ["Hello World\n"]
+    }
+}
