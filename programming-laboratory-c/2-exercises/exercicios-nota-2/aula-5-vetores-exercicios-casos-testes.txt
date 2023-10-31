@@ -1,0 +1,46 @@
+{
+    "media_vetor_inteiros": {
+        "inputs": ["1 2 6\n"],
+        "expected_outputs": ["3.00\n"]
+    },
+    "maximo_vetor_floats": {
+        "inputs": ["1.2 10.3 9.2\n"],
+        "expected_outputs": ["10.30\n"]
+    },
+    "conta_numero_especifico": {
+        "inputs": ["1 3 3\n3\n"],
+        "expected_outputs": ["2\n"]
+    },
+    "soma_vetor_floats": {
+        "inputs": ["1.2 2.3 3.4\n"],
+        "expected_outputs": ["6.90\n"]
+    },
+    "inverte_vetor_inteiros": {
+        "inputs": ["1 2 3\n"],
+        "expected_outputs": ["3 2 1\n"]
+    },
+    "segundo_maior_valor_vetor_inteiros": {
+        "inputs": ["5 3 8 6 4\n"],
+        "expected_outputs": ["6\n"]
+    },
+    "verifica_palindromo": {
+        "inputs": ["1 2 3 4 5 5 4 3 2 1\n", "1 2 3 4 5 6 7 8 9 10\n"],
+        "expected_outputs": ["Palindromo\n", "Nao Palindromo\n"]
+    },
+    "variancia_vetor_floats": {
+        "inputs": ["5.2 3.4 7.8 6.1 4.3\n"],
+        "expected_outputs": ["2.30\n"]
+    },
+    "vetor_em_ordem_crescente": {
+        "inputs": ["1 2 3 4 5\n", "1 2 7 4 5\n"],
+        "expected_outputs": ["Sim\n", "Nao\n"]
+    },
+    "produto_escalar_vetores_floats": {
+        "inputs": ["1.0 2.0 3.0\n2.0 3.0 4.0\n"],
+        "expected_outputs": ["20.00\n"]
+    },
+    "classifica_fruta": {
+        "inputs": ["0.7 0.5 0.3\n0.7 0.5 0.3\n", "0.6 0.4 0.2\n-0.8 -0.2 0.5\n"],
+        "expected_outputs": ["Classe A\n", "Classe B\n"]
+    }
+}
