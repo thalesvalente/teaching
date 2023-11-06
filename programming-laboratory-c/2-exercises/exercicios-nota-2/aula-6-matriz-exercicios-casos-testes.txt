@@ -1,0 +1,65 @@
+{
+    "soma_matrizes_3x3": {
+        "inputs": [
+            "1 2 3 4 5 6 7 8 9\n1 1 1 1 1 1 1 1 1\n"
+        ],
+        "expected_outputs": [
+            "2 3 4 \n5 6 7 \n8 9 10 \n"
+        ]
+    },
+    "transposicao_matriz_3x3": {
+        "inputs": [
+            "1 2 3 4 5 6 7 8 9\n"
+        ],
+        "expected_outputs": [
+            "1 4 7 \n2 5 8 \n3 6 9 \n"
+        ]
+    },
+    "multiplicacao_matrizes_3x3": {
+        "inputs": [
+            "1 2 3 4 5 6 7 8 9\n1 0 0 0 1 0 0 0 1\n"
+        ],
+        "expected_outputs": [
+            "1 2 3 \n4 5 6 \n7 8 9 \n"
+        ]
+    },
+    "verifica_matriz_identidade_3x3": {
+        "inputs": [
+            "1 0 0 0 1 0 0 0 1\n",
+            "1 2 3 4 5 6 7 8 9\n"
+        ],
+        "expected_outputs": [
+            "Identidade\n",
+            "Nao Identidade\n"
+        ]
+    },
+    "calculo_traco_matriz_3x3": {
+        "inputs": [
+            "1 2 3 4 5 6 7 8 9\n"
+        ],
+        "expected_outputs": [
+            "15\n"
+        ]
+    },
+    "diagnostico_medico_assistido": {
+    	"inputs": [
+    	],
+    	"expected_outputs": [
+      		"0.88 0.64 0.62/n"
+    	]
+    },
+    "simulacao_circuito_eletrico": {
+    	"inputs": [
+    	],
+    	"expected_outputs": [
+      		"2.50 3.00 6.00/n"
+    	]
+    },
+    "transformacoes_geometricas": {
+    	"inputs": [
+    	],
+    	"expected_outputs": [
+      		"4.00 5.00 6.00/n"
+    	]
+    }
+}
