@@ -1,0 +1,22 @@
+{
+    "verificacao_de_palindromo": {
+        "inputs": ["level\n", "palindromo\n", "arara\n", "teste\n"],
+        "expected_outputs": ["sim\n", "nao\n", "sim\n", "nao\n"]
+    },
+    "segundo_maior_valor_vetor_inteiros": {
+        "inputs": ["5 3 8 6 4\n", "10 9 8 7 6\n", "2 3 4 5 6\n"],
+        "expected_outputs": ["6\n", "9\n", "5\n"]
+    },
+    "soma_matrizes": {
+        "inputs": [],
+        "expected_outputs": ["10 10 10 \n10 10 10 \n10 10 10\n"]
+    },
+    "verifica_matriz_simetrica": {
+        "inputs": [],
+        "expected_outputs": ["sim\nnao\n"]
+    },
+    "produto_escalar_vetores_floats": {
+        "inputs": ["1.0 2.0 3.0 2.0 3.0 4.0\n"],
+        "expected_outputs": ["20.00\n"]
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "monitoramento_continuo_de_tensao": {
+        "inputs": ["3.0\ny\n3.6\ny\n4.5\nq\n"],
+        "expected_outputs": [
+            "Baixa\nMedia\nAlta\n"
+        ]
+    },
+    "medicao_iterativa_de_resistencia_em_um_circuito": {
+        "inputs": ["2\n3\n4\n5\n6\n"],
+        "expected_outputs": ["4.00\nAlerta! Possivel instabilidade do resistor detectada.\n"]
+    },
+    "treinamento_iterativo_de_um_neuronio_artificial": {
+        "inputs": ["0.5\n-0.2\n-999\n"],
+        "expected_outputs": ["0.20\n"]
+    },
+    "processamento_iterativo_de_sinais": {
+        "inputs": ["3\n1\n2\n3\n"],
+        "expected_outputs": ["2.00\n"]
+    }
+}

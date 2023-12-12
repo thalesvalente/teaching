@@ -1,0 +1,58 @@
+{
+    "inverte_vetor": {
+        "inputs": [
+            "1 2 3 4 5 6 7 8 9 10\n",
+            "10 9 8 7 6 5 4 3 2 1\n",
+            "5 5 5 5 5 5 5 5 5 5\n"
+        ],
+        "expected_outputs": [
+            "10 9 8 7 6 5 4 3 2 1 \n",
+            "1 2 3 4 5 6 7 8 9 10 \n",
+            "5 5 5 5 5 5 5 5 5 5 \n"
+        ]
+    },
+    "multiplica_matrizes": {
+        "inputs": [
+            "1 2 3 4 5 6 7 8 9\n1 2 3 4 5 6 7 8 9\n",
+            "1 0 0 0 1 0 0 0 1\n9 8 7 6 5 4 3 2 1\n"
+        ],
+        "expected_outputs": [
+            "30 36 42 \n66 81 96 \n102 126 150\n",
+            "9 8 7 \n6 5 4 \n3 2 1\n"
+        ]
+    },
+    "verifica_matriz_triangular_superior": {
+        "inputs": [
+            "1 2 3 0 5 6 0 0 9\n",
+            "1 2 3 4 5 6 7 8 9\n"
+        ],
+        "expected_outputs": [
+            "sim\n",
+            "nao\n"
+        ]
+    },
+    "counting_sort": {
+        "inputs": [
+            "9 8 7 6 5 4 3 2 1 0\n",
+            "5 3 6 2 1 9 4 7 8 0\n",
+	    "2 2 2 3 3 3 1 1 1 0\n",
+            "9 9 8 8 7 7 6 6 5 5\n"
+        ],
+        "expected_outputs": [
+            "0 1 2 3 4 5 6 7 8 9 \n",
+            "0 1 2 3 4 5 6 7 8 9 \n",
+	    "0 1 1 1 2 2 2 3 3 3 \n",
+            "5 5 6 6 7 7 8 8 9 9 \n"
+        ]
+    },
+    "transpoe_matriz": {
+        "inputs": [
+            "1 2 3 4 5 6 7 8 9\n",
+            "9 8 7 6 5 4 3 2 1\n"
+        ],
+        "expected_outputs": [
+            "1 4 7 \n2 5 8 \n3 6 9\n",
+            "9 6 3 \n8 5 2 \n7 4 1\n"
+        ]
+    }
+}
