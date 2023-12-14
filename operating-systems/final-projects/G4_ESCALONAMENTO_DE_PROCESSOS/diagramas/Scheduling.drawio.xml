@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2023-12-10T23:35:36.590Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="SyghQ7nmTQQ29pep0erv" version="22.1.7" type="device">
+  <diagram name="Página-1" id="JlEcTeESwITevSo80Gjz">
+    <mxGraphModel dx="6061" dy="3915" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kbR9hFaz7MENgyRnrgfs-32" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="-2660" y="-1470" width="710" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-1" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-2660" y="-1470" width="710" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhav6D8EuZ_-IiTHU21y-30" target="jhav6D8EuZ_-IiTHU21y-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-30" value="Inicialização do Ambiente de Simulação" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-740" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhav6D8EuZ_-IiTHU21y-32" target="jhav6D8EuZ_-IiTHU21y-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-32" value="Inicialização dos Recursos" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-560" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhav6D8EuZ_-IiTHU21y-34" target="jhav6D8EuZ_-IiTHU21y-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-34" value="Configuração dos Parâmetros" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-360" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhav6D8EuZ_-IiTHU21y-36" target="jhav6D8EuZ_-IiTHU21y-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-36" value="Inicialização das Variáveis Globais" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhav6D8EuZ_-IiTHU21y-38" target="jhav6D8EuZ_-IiTHU21y-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-38" value="Geração e Execução dos Processos" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="390" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jhav6D8EuZ_-IiTHU21y-40" target="jhav6D8EuZ_-IiTHU21y-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-40" value="Execução da Simulação" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-376" y="390" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-41" value="Cálculo e Impressão do Tempo Médio de Execução " style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-376" y="520" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-42" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-760" y="200" width="715" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="jhav6D8EuZ_-IiTHU21y-43" value="Fluxograma Código Round Robin" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;" vertex="1" parent="1">
+          <mxGeometry x="-770" y="160" width="340" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
