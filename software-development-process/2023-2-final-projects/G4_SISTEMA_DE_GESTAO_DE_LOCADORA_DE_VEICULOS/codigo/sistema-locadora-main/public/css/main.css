@@ -1,0 +1,36 @@
+.btn i {
+    margin-right: 8px;
+    font-size: 19px;
+}
+
+.info-section {
+    border: 1px solid rgba(137, 137, 137, 0.3); /* Cor da borda */
+    padding: 15px; /* Espaçamento interno */
+    margin-top: 20px; /* Espaçamento inferior */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+.info-section h2 {
+    font-size: 18px; /* Tamanho da fonte do título */
+    margin: 0;
+    color: #267bfb;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acoes i{
+    margin: 0;
+}
+
+.toast {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+}
