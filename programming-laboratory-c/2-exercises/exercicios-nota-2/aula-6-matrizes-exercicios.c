@@ -49,7 +49,30 @@
    10 10 10
 */
 void soma_matrizes_3x3() {
-    // Implemente sua solução aqui
+    int A[3][3], B[3][3], C[3][3];
+
+    // Lendo a Matriz A
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            scanf("%d ", &A[i][j]);
+
+    // Lendo a Matriz B
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            scanf("%d ", &B[i][j]);
+
+    // Somando as matrizes A e B e armazenando em C
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            C[i][j] = A[i][j] + B[i][j];
+
+    // Imprimindo a Matriz C
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 /* 
@@ -87,6 +110,25 @@ void transposicao_matriz_3x3() {
 */
 void multiplicacao_matrizes_3x3() {
     // Implemente sua solução aqui
+    int A[3][3], T[3][3];
+
+    // Lendo a Matriz A
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            scanf("%d", &A[i][j]);
+
+    // Transpondo a Matriz A em T
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            T[j][i] = A[i][j];
+
+    // Imprimindo a Matriz Transposta T
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d ", T[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 /* 
