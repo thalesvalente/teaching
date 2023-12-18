@@ -1,0 +1,40 @@
+{
+    "gerador_de_sequencia_de_fibonacci_com_limite": {
+        "inputs": ["10\n", "22\n", "5\n"],
+        "expected_outputs": [
+            "0 1 1 2 3 5 8 \n",
+            "0 1 1 2 3 5 8 13 21 \n",
+            "0 1 1 2 3 5 \n"
+        ]
+    },
+    "verificador_de_numeros_primos": {
+        "inputs": ["7\n", "10\n", "23\n"],
+        "expected_outputs": [
+            "sim\n",
+            "nao\n",
+            "sim\n"
+        ]
+    },
+    "multiplica_matrizes": {
+        "inputs": [
+            "1 2 3 4 5 6 7 8 9\n1 2 3 4 5 6 7 8 9\n",
+            "1 0 0 0 1 0 0 0 1\n9 8 7 6 5 4 3 2 1\n"
+        ],
+        "expected_outputs": [
+            "30 36 42 \n66 81 96 \n102 126 150\n",
+            "9 8 7 \n6 5 4 \n3 2 1\n"
+        ]
+    },
+    "multilayer_perceptron": {
+        "inputs": [
+            "0.0 0.0\n",
+            "1.0 1.0\n",
+            "0.5 0.5\n"
+        ],
+        "expected_outputs": [
+            "0.62\n",  
+            "0.68\n",  
+            "0.65\n"    
+        ]
+    }
+}
