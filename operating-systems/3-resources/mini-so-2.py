@@ -49,7 +49,7 @@ class SimpleOSSimulated_v2:
 # Executando programas simulados
 simple_os_v2 = SimpleOSSimulated_v2()
 
-# Testando os programas simulados
+# Testando os programas simulaexitdos
 calc_result = simple_os_v2.execute_program("calc", "add", 5, 3, 2)
 echo_result = simple_os_v2.execute_program("echo", "Hello, SimpleOS!")
 
