@@ -1,0 +1,11 @@
+// Autômato com Pilha
+digraph {
+	rankdir=LR size=10
+	q0 [label=q0 shape=circle]
+	q1 [label=q1 shape=circle]
+	qf [label=qf shape=doublecircle]
+	q0 -> q0 [label="a, ε → A"]
+	q0 -> q1 [label="ε, ε → ε"]
+	q1 -> q1 [label="b, A → ε"]
+	q1 -> qf [label="ε, ε → ε" constraint=false]
+}
