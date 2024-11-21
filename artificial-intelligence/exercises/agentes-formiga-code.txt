@@ -1,0 +1,174 @@
+; === INSTRUÇÕES ===
+; === DEFINIÇÃO DE VARIÁVEIS ===
+
+; Variáveis dos patches (espaço onde as formigas se movem)
+patches-own [
+  chemical             ; quantidade de feromônio neste patch
+  food                 ; quantidade de comida neste patch (0, 1 ou 2)
+  nest?                ; verdadeiro se o patch é parte do ninho, falso caso contrário
+  nest-scent           ; valor numérico maior próximo ao ninho, usado para orientar as formigas
+  food-source-number   ; identifica as fontes de alimento (1, 2 ou 3)
+]
+
+; === PROCEDIMENTOS DE CONFIGURAÇÃO ===
+
+to setup
+  clear-all                            ; limpa o mundo e reinicia a simulação
+  set-default-shape turtles "bug"       ; define o formato das formigas como "inseto"
+  create-turtles population [           ; cria formigas com base no valor do slider 'population'
+    set size 2                          ; aumenta o tamanho para melhor visualização
+    set color red                       ; vermelho indica que não está carregando comida
+  ]
+  setup-patches                         ; chama o procedimento para configurar os patches
+  reset-ticks                           ; reinicia o contador de tempo da simulação
+end
+
+to setup-patches
+  ask patches [
+    setup-nest                          ; configura o ninho nos patches
+    setup-food                          ; configura as fontes de alimento
+    recolor-patch                       ; define as cores dos patches para visualização
+  ]
+end
+
+to setup-nest  ; procedimento dos patches
+  set nest? (distancexy 0 0) < 5         ; define patches dentro de um raio de 5 unidades como ninho
+  set nest-scent 200 - distancexy 0 0    ; valor maior próximo ao ninho, decrescendo com a distância
+end
+
+to setup-food  ; procedimento dos patches
+  ; Configura três fontes de alimento em posições específicas
+  if (distancexy (0.6 * max-pxcor) 0) < 5 [
+    set food-source-number 1
+  ]
+  if (distancexy (-0.6 * max-pxcor) (-0.6 * max-pycor)) < 5 [
+    set food-source-number 2
+  ]
+  if (distancexy (-0.8 * max-pxcor) (0.8 * max-pycor)) < 5 [
+    set food-source-number 3
+  ]
+  ; Se o patch faz parte de uma fonte de alimento, atribui uma quantidade de comida (1 ou 2)
+  if food-source-number > 0 [
+    set food one-of [1 2]
+  ]
+end
+
+to recolor-patch  ; procedimento dos patches
+  ifelse nest? [
+    set pcolor violet                    ; patches do ninho em violeta
+  ] [
+    ifelse food > 0 [
+      ; patches com comida são coloridos de acordo com a fonte
+      if food-source-number = 1 [ set pcolor cyan ]
+      if food-source-number = 2 [ set pcolor sky ]
+      if food-source-number = 3 [ set pcolor blue ]
+    ] [
+      ; patches normais variam de cor com base na quantidade de feromônio
+      set pcolor scale-color green chemical 0.1 5
+    ]
+  ]
+end
+
+; === PROCEDIMENTOS PRINCIPAIS ===
+
+to go
+  ask turtles [
+    if who >= ticks [ stop ]             ; sincroniza a saída das formigas do ninho com o tempo
+    ifelse color = red [
+      look-for-food                      ; procura por comida se não estiver carregando
+    ] [
+      return-to-nest                     ; retorna ao ninho se estiver carregando comida
+    ]
+    wiggle                               ; movimento aleatório para simular procura
+    fd 1                                 ; move-se para frente
+  ]
+  diffuse chemical (diffusion-rate / 100)  ; difusão do feromônio entre os patches
+  ask patches [
+    set chemical chemical * (100 - evaporation-rate) / 100  ; evaporação do feromônio
+    recolor-patch                     ; atualiza a cor do patch após mudanças
+  ]
+  tick                                  ; avança o contador de tempo da simulação
+end
+
+; === COMPORTAMENTOS DAS FORMIGAS ===
+
+to look-for-food  ; procedimento das formigas
+  if food > 0 [
+    set color orange + 1                ; muda a cor para indicar que está carregando comida
+    set food food - 1                   ; reduz a quantidade de comida no patch
+    rt 180                              ; vira 180 graus para retornar ao ninho
+    stop                                ; finaliza o procedimento atual
+  ]
+  if (chemical >= 0.05) and (chemical < 2) [
+    uphill-chemical                     ; segue o rastro de feromônio
+  ]
+end
+
+to return-to-nest  ; procedimento das formigas
+  ifelse nest? [
+    set color red                       ; deposita a comida e muda a cor para não carregando
+    rt 180                              ; vira 180 graus para sair novamente
+  ] [
+    set chemical chemical + 60          ; deposita feromônio no caminho de volta
+    uphill-nest-scent                   ; move-se em direção ao ninho seguindo o gradiente
+  ]
+end
+
+; === MOVIMENTAÇÃO E ORIENTAÇÃO ===
+
+to uphill-chemical  ; procedimento das formigas
+  let scent-ahead chemical-scent-at-angle 0
+  let scent-right chemical-scent-at-angle 45
+  let scent-left chemical-scent-at-angle -45
+  if (scent-right > scent-ahead) or (scent-left > scent-ahead) [
+    ifelse scent-right > scent-left [
+      rt 45                              ; vira 45 graus à direita
+    ] [
+      lt 45                              ; vira 45 graus à esquerda
+    ]
+  ]
+end
+
+to uphill-nest-scent  ; procedimento das formigas
+  let scent-ahead nest-scent-at-angle 0
+  let scent-right nest-scent-at-angle 45
+  let scent-left nest-scent-at-angle -45
+  if (scent-right > scent-ahead) or (scent-left > scent-ahead) [
+    ifelse scent-right > scent-left [
+      rt 45                              ; vira 45 graus à direita
+    ] [
+      lt 45                              ; vira 45 graus à esquerda
+    ]
+  ]
+end
+
+to wiggle  ; procedimento das formigas
+  rt random 40                           ; vira um ângulo aleatório à direita
+  lt random 40                           ; vira um ângulo aleatório à esquerda
+  if not can-move? 1 [ rt 180 ]          ; se não puder se mover, vira 180 graus
+end
+
+; === FUNÇÕES AUXILIARES ===
+
+to-report nest-scent-at-angle [angle]
+  let p patch-right-and-ahead angle 1
+  if p = nobody [ report 0 ]             ; se não houver patch, retorna 0
+  report [nest-scent] of p               ; retorna o valor de 'nest-scent' do patch
+end
+
+to-report chemical-scent-at-angle [angle]
+  let p patch-right-and-ahead angle 1
+  if p = nobody [ report 0 ]             ; se não houver patch, retorna 0
+  report [chemical] of p                 ; retorna o valor de 'chemical' do patch
+end
+
+; === INFORMAÇÕES ADICIONAIS ===
+
+; Este modelo simula o comportamento de formigas em busca de alimento e retorno ao ninho.
+; As formigas deixam rastros de feromônio para guiar outras formigas às fontes de alimento.
+; O feromônio evapora e difunde ao longo do tempo, criando um gradiente que as formigas seguem.
+
+; === COPYRIGHT ===
+
+; Copyright 1997 Uri Wilensky.
+; Veja a aba 'Info' para o copyright completo e licença.
