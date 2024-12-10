@@ -1,0 +1,112 @@
+<mxGraphModel dx="772" dy="521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1"
+  fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    
+    <!-- Ator (Cliente) -->
+    <mxCell id="2" value="Cliente" style="shape=mxgraph.mockup.misc.user;verticalLabelPosition=bottom;verticalAlign=top;"
+      vertex="1" parent="1">
+      <mxGeometry x="50" y="200" width="40" height="80" as="geometry"/>
+    </mxCell>
+    
+    <!-- Sistema de Venda de Ingressos (Boundary) -->
+    <mxCell id="3" value="Sistema de Venda de Ingressos" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;"
+      vertex="1" parent="1">
+      <mxGeometry x="150" y="50" width="400" height="500" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Selecionar Filme -->
+    <mxCell id="4" value="Selecionar Filme" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="200" y="100" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Selecionar Sessão -->
+    <mxCell id="5" value="Selecionar Sessão" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="200" y="180" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Escolher Assento -->
+    <mxCell id="6" value="Escolher Assento" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="200" y="260" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Efetuar Pagamento -->
+    <mxCell id="7" value="Efetuar Pagamento" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="200" y="340" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Emitir Ingresso -->
+    <mxCell id="8" value="Emitir Ingresso" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="200" y="420" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Cancelar Compra -->
+    <mxCell id="9" value="Cancelar Compra" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#ff0000;fillColor=#ffdddd;"
+      vertex="1" parent="3">
+      <mxGeometry x="400" y="240" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Relação Ator com "Selecionar Filme" -->
+    <mxCell id="10" edge="1" parent="1" source="2" target="4" style="endArrow=block;">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    
+    <!-- Relações Include -->
+    <mxCell id="11" edge="1" parent="3" source="4" target="5" style="endArrow=block;dashed=1;">
+      <mxGeometry relative="1" as="geometry"/>
+      <mxCell value="<include>" vertex="1" style="text;align=center;" parent="1">
+        <mxGeometry x="230" y="140" width="80" height="20" as="geometry"/>
+      </mxCell>
+    </mxCell>
+    <mxCell id="12" edge="1" parent="3" source="5" target="6" style="endArrow=block;dashed=1;">
+      <mxGeometry relative="1" as="geometry"/>
+      <mxCell value="<include>" vertex="1" style="text;align=center;" parent="1">
+        <mxGeometry x="230" y="220" width="80" height="20" as="geometry"/>
+      </mxCell>
+    </mxCell>
+    <mxCell id="13" edge="1" parent="3" source="6" target="7" style="endArrow=block;dashed=1;">
+      <mxGeometry relative="1" as="geometry"/>
+      <mxCell value="<include>" vertex="1" style="text;align=center;" parent="1">
+        <mxGeometry x="230" y="300" width="80" height="20" as="geometry"/>
+      </mxCell>
+    </mxCell>
+    <mxCell id="14" edge="1" parent="3" source="7" target="8" style="endArrow=block;dashed=1;">
+      <mxGeometry relative="1" as="geometry"/>
+      <mxCell value="<include>" vertex="1" style="text;align=center;" parent="1">
+        <mxGeometry x="230" y="380" width="80" height="20" as="geometry"/>
+      </mxCell>
+    </mxCell>
+    
+    <!-- Relações Extend -->
+    <mxCell id="15" edge="1" parent="3" source="4" target="9" style="endArrow=block;dashed=1;">
+      <mxGeometry relative="1" as="geometry"/>
+      <mxCell value="<extend>" vertex="1" style="text;align=center;" parent="1">
+        <mxGeometry x="350" y="120" width="80" height="20" as="geometry"/>
+      </mxCell>
+    </mxCell>
+    <mxCell id="16" edge="1" parent="3" source="5" target="9" style="endArrow=block;dashed=1;">
+      <mxGeometry relative="1" as="geometry"/>
+      <mxCell value="<extend>" vertex="1" style="text;align=center;" parent="1">
+        <mxGeometry x="350" y="200" width="80" height="20" as="geometry"/>
+      </mxCell>
+    </mxCell>
+    <mxCell id="17" edge="1" parent="3" source="6" target="9" style="endArrow=block;dashed=1;">
+      <mxGeometry relative="1" as="geometry"/>
+      <mxCell value="<extend>" vertex="1" style="text;align=center;" parent="1">
+        <mxGeometry x="350" y="280" width="80" height="20" as="geometry"/>
+      </mxCell>
+    </mxCell>
+    <mxCell id="18" edge="1" parent="3" source="7" target="9" style="endArrow=block;dashed=1;">
+      <mxGeometry relative="1" as="geometry"/>
+      <mxCell value="<extend>" vertex="1" style="text;align=center;" parent="1">
+        <mxGeometry x="350" y="360" width="80" height="20" as="geometry"/>
+      </mxCell>
+    </mxCell>
+  </root>
+</mxGraphModel>

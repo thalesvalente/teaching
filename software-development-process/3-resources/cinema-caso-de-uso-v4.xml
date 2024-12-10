@@ -1,0 +1,80 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Casos de Uso">
+    <mxGraphModel dx="772" dy="521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1"
+      fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Ator -->
+        <mxCell id="actor" value="Cliente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="200" width="30" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Caso de Uso: Selecionar Filme -->
+        <mxCell id="selectMovie" value="Selecionar Filme" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="150" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Caso de Uso: Selecionar Sessão -->
+        <mxCell id="selectSession" value="Selecionar Sessão" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="250" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Caso de Uso: Escolher Assento -->
+        <mxCell id="chooseSeat" value="Escolher Assento" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="350" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Caso de Uso: Efetuar Pagamento -->
+        <mxCell id="makePayment" value="Efetuar Pagamento" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="450" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Caso de Uso: Emitir Ingresso -->
+        <mxCell id="issueTicket" value="Emitir Ingresso" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="550" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Caso de Uso: Cancelar Compra -->
+        <mxCell id="cancelPurchase" value="Cancelar Compra" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Relação: Cliente -> Selecionar Filme -->
+        <mxCell id="actorToSelectMovie" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="actor" target="selectMovie">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Relações Include -->
+        <mxCell id="includeSelectSession" value="&lt;&lt;include&gt;&gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="selectMovie" target="selectSession">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="includeChooseSeat" value="&lt;&lt;include&gt;&gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="selectSession" target="chooseSeat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="includeMakePayment" value="&lt;&lt;include&gt;&gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="chooseSeat" target="makePayment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="includeIssueTicket" value="&lt;&lt;include&gt;&gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="makePayment" target="issueTicket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Relações Extend -->
+        <mxCell id="extendSelectMovie" value="&lt;&lt;extend&gt;&gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="cancelPurchase" target="selectMovie">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="extendSelectSession" value="&lt;&lt;extend&gt;&gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="cancelPurchase" target="selectSession">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="extendChooseSeat" value="&lt;&lt;extend&gt;&gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="cancelPurchase" target="chooseSeat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="extendMakePayment" value="&lt;&lt;extend&gt;&gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="cancelPurchase" target="makePayment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

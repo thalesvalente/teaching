@@ -1,0 +1,68 @@
+<mxGraphModel dx="772" dy="521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1"
+  fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    
+    <!-- Ator (Cliente) -->
+    <mxCell id="2" value="Cliente" style="shape=mxgraph.mockup.misc.user;verticalLabelPosition=bottom;verticalAlign=top;"
+      vertex="1" parent="1">
+      <mxGeometry x="50" y="80" width="40" height="80" as="geometry"/>
+    </mxCell>
+    
+    <!-- Sistema de Venda de Ingressos (Boundary) -->
+    <mxCell id="3" value="Sistema de Venda de Ingressos" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;"
+      vertex="1" parent="1">
+      <mxGeometry x="200" y="50" width="300" height="300" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Selecionar Filme -->
+    <mxCell id="4" value="Selecionar Filme" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="50" y="30" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Selecionar Sessão -->
+    <mxCell id="5" value="Selecionar Sessão" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="50" y="110" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Escolher Assento -->
+    <mxCell id="6" value="Escolher Assento" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="50" y="190" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Efetuar Pagamento -->
+    <mxCell id="7" value="Efetuar Pagamento" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="200" y="110" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Caso de Uso: Emitir Ingresso -->
+    <mxCell id="8" value="Emitir Ingresso" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#dae8fc;"
+      vertex="1" parent="3">
+      <mxGeometry x="200" y="190" width="120" height="60" as="geometry"/>
+    </mxCell>
+    
+    <!-- Relações (Linhas entre Ator e "Selecionar Filme") -->
+    <mxCell id="9" edge="1" parent="1" target="4" source="2" style="endArrow=none;">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    
+    <!-- Relações entre casos de uso (simplesmente linhas representando sequência) -->
+    <mxCell id="10" edge="1" parent="3" source="4" target="5" style="endArrow=block;">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="11" edge="1" parent="3" source="5" target="6" style="endArrow=block;">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="12" edge="1" parent="3" source="6" target="7" style="endArrow=block;">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="13" edge="1" parent="3" source="7" target="8" style="endArrow=block;">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
