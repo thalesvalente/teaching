@@ -1,0 +1,96 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="25.0.3">
+  <diagram name="Diagrama de Atividades - Comprar Ingresso" id="Ez9yJKbT3FZj1GrWo6bu">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="start" value="Início" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chooseMovie" value="Escolher Filme" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chooseSession" value="Escolher Sessão" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chooseSeat" value="Escolher Assento" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="300" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="makePayment" value="Realizar Pagamento" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Losango de Decisão para pagamento -->
+        <mxCell id="paymentDecision" value="Pagamento Bem-sucedido?" style="shape=diamond;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="500" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="paymentFailed" value="Falha no Pagamento" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFAAAA;strokeColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="400" y="550" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cancelPurchase" value="Cancelar Compra" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFAAAA;strokeColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="400" y="650" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="confirmPurchase" value="Confirmar Compra" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="issueTicket" value="Emitir Ingresso" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="700" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="end" value="Fim" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FF0000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="800" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Conexões principais -->
+        <mxCell id="startToChooseMovie" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="start" target="chooseMovie">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="chooseMovieToChooseSession" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="chooseMovie" target="chooseSession">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="chooseSessionToChooseSeat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="chooseSession" target="chooseSeat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="chooseSeatToMakePayment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="chooseSeat" target="makePayment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Fluxo variacional: Decisão de Pagamento -->
+        <mxCell id="makePaymentToPaymentDecision" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="makePayment" target="paymentDecision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Se o pagamento foi bem-sucedido -->
+        <mxCell id="paymentDecisionToConfirmPurchase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="paymentDecision" target="confirmPurchase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Se o pagamento falhou -->
+        <mxCell id="paymentDecisionToPaymentFailed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="paymentDecision" target="paymentFailed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Fluxo variacional: Falha no pagamento -->
+        <mxCell id="paymentFailedToMakePayment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="paymentFailed" target="makePayment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Fluxo variacional: Cancelamento -->
+        <mxCell id="chooseSeatToCancelPurchase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="chooseSeat" target="cancelPurchase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cancelPurchaseToEnd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="cancelPurchase" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Fluxo principal -->
+        <mxCell id="confirmPurchaseToIssueTicket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="confirmPurchase" target="issueTicket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="issueTicketToEnd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="issueTicket" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
