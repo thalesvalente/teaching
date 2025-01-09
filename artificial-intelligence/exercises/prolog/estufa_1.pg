@@ -1,0 +1,41 @@
+% Declarando predicados dinâmicos para permitir alteração durante execução
+:- dynamic(temperatura/1).
+:- dynamic(objetivo/1).
+
+% Regras de Aquecimento
+ligar_aquecimento_prioritario :-
+    temperatura(T),
+    objetivo(economia_energia),
+    T < 15,  % Liga o aquecimento prioritário se a temperatura estiver abaixo de 15°C.
+    write('Aquecimento Prioritário Ligado!'), nl.
+
+ligar_aquecimento_normal :-
+    temperatura(T),
+    \+ objetivo(economia_energia),  % Verifica se não estamos em economia de energia
+    T < 20,  % Liga o aquecimento normal se a temperatura estiver abaixo de 20°C.
+    write('Aquecimento Normal Ligado!'), nl.
+
+% Função principal para decidir qual aquecimento ligar
+ligar_aquecimento :-
+    ligar_aquecimento_prioritario,
+    !.  % O corte impede que outras regras sejam verificadas.
+ligar_aquecimento :-
+    ligar_aquecimento_normal,
+    !.
+ligar_aquecimento :-
+    write('Nenhuma regra de aquecimento aplicada.'), nl,
+    fail.
+    
+% Initialization
+:- initialization(main).
+
+% Função Main
+main :-
+    % Definindo fatos iniciais
+    retractall(temperatura(_)),  % Remove qualquer fato de temperatura anterior
+    retractall(objetivo(_)),     % Remove qualquer objetivo anterior
+    assertz(temperatura(14)),    % Define a temperatura atual como 14°C
+    assertz(objetivo(economia_energia)),  % Define o objetivo como economia de energia
+
+    % Chama o predicado para ligar o aquecimento
+    ligar_aquecimento.
