@@ -1,0 +1,32 @@
+Registrar-se no Sistema (Usuário)
+Descrição: Permite ao usuário criar uma conta no sistema.
+Ator: Usuário
+Ações:
+Criar uma conta
+
+Realizar login no Sistema (Usuário)
+Descrição: Permite ao usuário realizar login no sistema.
+Ator: Usuário
+Ações:
+Realizar login
+
+Visualizar questões disponíveis (Usuário)
+Descrição: Permite ao usuário listar e visualizar detalhes de questões de programação disponíveis.
+Ator: Usuário
+Ações:
+Listar questões disponíveis
+Visualizar detalhes de uma questão
+
+Submeter Scripts (Usuário)
+Descrição: Permite ao usuário enviar scripts para correção, seja via upload ou caixa de texto.
+Ator: Usuário
+Ações:
+Enviar scripts para correção
+
+Receber Feedback e Correções (Usuário)
+Descrição: Permite ao usuário visualizar feedback sobre os erros encontrados em seus scripts, visualizar correções sugeridas e aplicar correções automáticas.
+Ator: Usuário
+Ações:
+Visualizar feedback sobre erros encontrados
+Visualizar correções sugeridas
+Aplicar correções automáticas

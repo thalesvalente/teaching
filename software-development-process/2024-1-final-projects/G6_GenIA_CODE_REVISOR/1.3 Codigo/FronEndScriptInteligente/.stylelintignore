@@ -1,0 +1,5 @@
+# Ignorar todos os arquivos JavaScript e TypeScript
+*.js
+*.jsx
+*.ts
+*.tsx

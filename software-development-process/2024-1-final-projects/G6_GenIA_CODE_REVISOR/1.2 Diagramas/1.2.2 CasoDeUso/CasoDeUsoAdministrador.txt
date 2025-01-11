@@ -1,0 +1,32 @@
+Gerenciar Banco de scripts (Administrador)
+Descrição: Permite ao administrador gerenciar o banco de questões de scripts.
+Ator: Administrador
+Ações:
+Cadastrar novas questões
+Editar questões existentes
+Remover questões
+
+
+Definir Entradas e Saídas Esperadas (Administrador)
+Descrição: Permite ao administrador definir, editar e remover entradas e saídas esperadas para as questões.
+Ator: Administrador
+Ações:
+Cadastrar entradas e saídas esperadas
+Editar entradas e saídas esperadas
+Remover entradas e saídas esperadas
+
+Configurar Integrações (Administrador)
+Descrição: Permite ao administrador configurar integrações com APIs externas ou modelos internos de IA.
+Ator: Administrador
+Ações:
+Configurar integração com APIs externas
+Configurar modelo interno de IA
+
+Gerenciar Usuários e Permissões (Administrador)
+Descrição: Permite ao administrador gerenciar os usuários e suas permissões no sistema.
+Ator: Administrador
+Ações:
+Cadastrar novos usuários
+Editar informações de usuários
+Definir permissões de acesso
+Remover usuários

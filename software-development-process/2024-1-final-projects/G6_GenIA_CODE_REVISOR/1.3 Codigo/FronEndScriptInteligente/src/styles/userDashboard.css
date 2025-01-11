@@ -1,0 +1,132 @@
+.dashboard-container {
+  display: flex; /* Define o contêiner como um flexbox */
+  flex-direction: column; /* Define a direção dos itens flexíveis em uma coluna */
+  align-items: center; /* Centraliza os itens no eixo transversal (horizontal) */
+  justify-content: center; /* Centraliza os itens no eixo principal (vertical) */
+  min-height: 80vh; /* Define uma altura mínima de 80% da altura da viewport */
+  padding: 20px; /* Adiciona preenchimento interno de 20 pixels em todos os lados */
+  margin: auto; /* Centraliza o contêiner horizontalmente */
+  border: 1px solid #00e6e6; /* Define uma borda sólida de 1 pixel com cor #00e6e6 */
+  border-radius: 5px; /* Adiciona cantos arredondados com raio de 5 pixels */
+  box-shadow: 0 0 10px #00e6e6; /* Adiciona uma sombra em torno do contêiner com cor #00e6e6 */
+  background-color: black; /* Define a cor de fundo como preta */
+  width: 100%; /* Define a largura do contêiner como 100% */
+}
+
+h1 {
+  margin-bottom: 20px; /* Adiciona uma margem inferior de 20 pixels */
+  font-size: 24px; /* Define o tamanho da fonte como 24 pixels */
+  color: #00e6e6; /* Define a cor do texto como #00e6e6 */
+  text-shadow: 0 0 5px #00e6e6; /* Adiciona uma sombra de texto com cor #00e6e6 */
+}
+
+.form-container {
+  display: flex; /* Define o contêiner como um flexbox */
+  flex-direction: column; /* Define a direção dos itens flexíveis em uma coluna */
+  align-items: center; /* Centraliza os itens no eixo transversal (horizontal) */
+  width: 100%; /* Define a largura do contêiner como 100% */
+  gap: 20px; /* Define um espaço de 20 pixels entre os itens flexíveis */
+}
+
+.textarea-container {
+  width: 100%; /* Define a largura do contêiner como 100% */
+  display: flex; /* Define o contêiner como um flexbox */
+  justify-content: center; /* Centraliza os itens no eixo principal (horizontal) */
+}
+
+textarea {
+  width: 100%; /* Define a largura do textarea como 100% */
+  max-width: 600px; /* Define a largura máxima do textarea como 600 pixels */
+  padding: 10px; /* Adiciona preenchimento interno de 10 pixels em todos os lados */
+  font-size: 16px; /* Define o tamanho da fonte como 16 pixels */
+  border: 1px solid #00e6e6; /* Define uma borda sólida de 1 pixel com cor #00e6e6 */
+  border-radius: 5px; /* Adiciona cantos arredondados com raio de 5 pixels */
+  background-color: black; /* Define a cor de fundo como preta */
+  color: #00e6e6; /* Define a cor do texto como #00e6e6 */
+  resize: none; /* Impede que o usuário redimensione o textarea */
+  overflow: hidden; /* Oculta a barra de rolagem */
+}
+
+.api-select-container {
+  display: flex; /* Define o contêiner como um flexbox */
+  flex-direction: column; /* Define a direção dos itens flexíveis em uma coluna */
+  align-items: center; /* Centraliza os itens no eixo transversal (horizontal) */
+}
+
+label {
+  margin-bottom: 5px; /* Adiciona uma margem inferior de 5 pixels */
+  font-weight: bold; /* Define o peso da fonte como negrito */
+  color: #00e6e6; /* Define a cor do texto como #00e6e6 */
+}
+
+select {
+  padding: 10px; /* Adiciona preenchimento interno de 10 pixels em todos os lados */
+  font-size: 16px; /* Define o tamanho da fonte como 16 pixels */
+  border: 1px solid #00e6e6; /* Define uma borda sólida de 1 pixel com cor #00e6e6 */
+  border-radius: 5px; /* Adiciona cantos arredondados com raio de 5 pixels */
+  background-color: black; /* Define a cor de fundo como preta */
+  color: #00e6e6; /* Define a cor do texto como #00e6e6 */
+}
+
+.corrections-container {
+  display: flex; /* Define o contêiner como um flexbox */
+  flex-direction: column; /* Define a direção dos itens flexíveis em uma coluna */
+  align-items: center; /* Centraliza os itens no eixo transversal (horizontal) */
+  gap: 20px; /* Define um espaço de 20 pixels entre os itens flexíveis */
+  margin-top: 20px; /* Adiciona uma margem superior de 20 pixels */
+}
+
+.correction-card {
+  width: 100%; /* Define a largura do cartão de correção como 100% */
+  max-width: 600px; /* Define a largura máxima do cartão de correção como 600 pixels */
+  padding: 10px; /* Adiciona preenchimento interno de 10 pixels em todos os lados */
+  border: 1px solid #00e6e6; /* Define uma borda sólida de 1 pixel com cor #00e6e6 */
+  border-radius: 5px; /* Adiciona cantos arredondados com raio de 5 pixels */
+  background-color: black; /* Define a cor de fundo como preta */
+  color: #00e6e6; /* Define a cor do texto como #00e6e6 */
+  box-shadow: 0 0 10px #00e6e6; /* Adiciona uma sombra em torno do cartão de correção com cor #00e6e6 */
+}
+
+.correction-card p {
+  margin: 0; /* Remove todas as margens */
+  padding: 0; /* Remove todos os preenchimentos */
+  word-wrap: break-word; /* Quebra a linha de texto quando for muito longa para caber em uma única linha */
+}
+
+.submit-button,
+.support-button {
+  padding: 10px 20px; /* Adiciona preenchimento interno de 10 pixels em cima e em baixo, e 20 pixels nos lados */
+  font-size: 16px; /* Define o tamanho da fonte como 16 pixels */
+  color: #00e6e6; /* Define a cor do texto como #00e6e6 */
+  background-color: black; /* Define a cor de fundo como preta */
+  border: 1px solid #00e6e6; /* Define uma borda sólida de 1 pixel com cor #00e6e6 */
+  border-radius: 5px; /* Adiciona cantos arredondados com raio de 5 pixels */
+  cursor: pointer; /* Define o cursor do mouse como ponteiro ao passar sobre o botão */
+  font-weight: bold; /* Define o peso da fonte como negrito */
+  text-shadow: 0 0 5px #00e6e6; /* Adiciona uma sombra de texto com cor #00e6e6 */
+}
+
+.submit-button:hover,
+.support-button:hover {
+  background-color: #00b3b3; /* Define a cor de fundo como #00b3b3 ao passar o mouse sobre o botão */
+  color: black; /* Define a cor do texto como preta ao passar o mouse sobre o botão */
+}
+
+.selected-correction-container {
+  display: flex; /* Define o contêiner como um flexbox */
+  flex-direction: column; /* Define a direção dos itens flexíveis em uma coluna */
+  align-items: center; /* Centraliza os itens no eixo transversal (horizontal) */
+  margin-top: 20px; /* Adiciona uma margem superior de 20 pixels */
+}
+
+.output-message {
+  margin-top: 20px; /* Adiciona uma margem superior de 20 pixels */
+  padding: 10px; /* Adiciona preenchimento interno de 10 pixels em todos os lados */
+  border: 1px solid #00e6e6; /* Define uma borda sólida de 1 pixel com cor #00e6e6 */
+  border-radius: 5px; /* Adiciona cantos arredondados com raio de 5 pixels */
+  background-color: black; /* Define a cor de fundo como preta */
+  color: #00e6e6; /* Define a cor do texto como #00e6e6 */
+  width: 100%; /* Define a largura da mensagem de saída como 100% */
+  max-width: 600px; /* Define a largura máxima da mensagem de saída como 600 pixels */
+  text-align: center; /* Centraliza o texto */
+}

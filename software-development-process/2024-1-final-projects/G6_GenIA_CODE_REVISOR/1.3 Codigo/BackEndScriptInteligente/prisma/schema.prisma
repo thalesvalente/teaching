@@ -1,0 +1,43 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  EMPLOYEE
+  ADMIN
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  password String
+  role     Role     @default(USER)
+  scripts  Script[]
+}
+
+model Api {
+  id   Int    @id @default(autoincrement())
+  name String
+  url  String
+}
+
+model Script {
+  id         Int      @id @default(autoincrement())
+  content    String
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analyses   Analysis[]
+}
+
+model Analysis {
+  id        Int    @id @default(autoincrement())
+  scriptId  Int
+  script    Script @relation(fields: [scriptId], references: [id])
+  result    String
+}

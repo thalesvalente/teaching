@@ -1,0 +1,24 @@
+Cadastrar Scripts de Usuários (Funcionário)
+Descrição: Permite ao funcionário cadastrar scripts submetidos por usuários 
+Ator: Funcionário
+Ações:
+Cadastrar scripts submetidos por usuários
+
+Visualizar Scripts de Usuários (Funcionário)
+Descrição: Permite ao funcionário visualizar esses scripts submetidos por usuários .
+Ator: Funcionário
+Ações:
+Visualizar scripts submetidos por usuários
+
+Validar Scripts corrigidos(Funcionário)
+Descrição: Permite ao funcionário validar scripts corrigidos.
+Ator: Funcionário
+Ações:
+Validar scripts corrigidos
+Fornecer feedback adicional sobre scripts
+
+Fornecer feedback adicional sobre scripts Scripts (Funcionário)
+Descrição: Permite ao funcionário fornecer feedback adicional.
+Ator: Funcionário
+Ações:
+Fornecer feedback adicional sobre scripts

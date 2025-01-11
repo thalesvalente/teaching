@@ -1,0 +1,46 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 20px;
+  margin: auto;
+  border: 1px solid #00e6e6;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00e6e6;
+  background-color: black;
+}
+
+h1 {
+  margin-bottom: 40px; /* Aumenta o espaçamento para mover a mensagem mais para cima */
+  font-size: 24px;
+  color: #00e6e6;
+  text-shadow: 0 0 5px #00e6e6;
+}
+
+.dashboard-options {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  width: 200px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #00e6e6;
+  border-radius: 5px;
+  background-color: black;
+  color: #00e6e6;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 0 0 5px black;
+}
+
+button:hover {
+  background-color: #00b3b3;
+  color: black;
+}
