@@ -1,0 +1,65 @@
+% Fatos descrevendo o estado atual da estufa
+umidade(25).          % Define a umidade atual da estufa como 25%.
+temperatura(28).      % Define a temperatura atual da estufa como 28°C.
+luminosidade(500).    % Define a luminosidade atual como 500 lux.
+nivel_co2(400).       % Define o nível atual de CO2 como 400 ppm.
+
+% Regras para ativar os diferentes sistemas da estufa
+
+% Sistema de Irrigação
+ativar_irrigacao :-
+    umidade(Um),          % Obtém o valor da umidade atual a partir do fato `umidade/1`.
+    Um < 30,              % Verifica se a umidade está abaixo de 30%.
+    write('Ativando sistema de irrigação.'), nl, !. % Garante que esta regra pare aqui se for verdadeira.
+ativar_irrigacao :- true. % Caso contrário, retorna sucesso sem fazer nada.
+% Para garantir que nenhuma regra falhe, foi adicionado um segundo predicado em cada regra, 
+% retornando sucesso (true) caso as condições não sejam atendidas
+
+% Sistema de Ventilação
+ligar_ventilacao :-
+    temperatura(T),       % Obtém o valor da temperatura atual a partir do fato `temperatura/1`.
+    T > 35,               % Verifica se a temperatura está acima de 35°C.
+    write('Ligando sistema de ventilação.'), nl, !. % Garante que esta regra pare aqui se for verdadeira.
+ligar_ventilacao :- true. % Caso contrário, retorna sucesso sem fazer nada.
+
+% Sistema de Aquecimento
+ligar_aquecimento :-
+    temperatura(T),       % Obtém o valor da temperatura atual a partir do fato `temperatura/1`.
+    T < 20,               % Verifica se a temperatura está abaixo de 20°C.
+    write('Ligando sistema de aquecimento.'), nl, !. % Garante que esta regra pare aqui se for verdadeira.
+ligar_aquecimento :- true. % Caso contrário, retorna sucesso sem fazer nada.
+
+% Sistema de Iluminação
+ajustar_iluminacao :-
+    luminosidade(L),      % Obtém o valor da luminosidade atual a partir do fato `luminosidade/1`.
+    L < 300,              % Verifica se a luminosidade está abaixo de 300 lux.
+    write('Aumentando intensidade das luzes artificiais.'), nl, !. % Garante que esta regra pare aqui se for verdadeira.
+ajustar_iluminacao :- true. % Caso contrário, retorna sucesso sem fazer nada.
+
+% Controle de CO2
+controlar_co2 :-
+    nivel_co2(CO2),       % Obtém o valor do nível de CO2 a partir do fato `nivel_co2/1`.
+    CO2 > 1000,           % Verifica se o nível de CO2 está acima de 1000 ppm.
+    write('Ativando sistema de ventilação para reduzir níveis de CO2.'), nl, !. % Garante que esta regra pare aqui se for verdadeira.
+controlar_co2 :- true. % Caso contrário, retorna sucesso sem fazer nada.
+
+% Ciclo principal de controle da estufa
+controle_estufa :-
+    write('Iniciando controle da estufa...'), nl, % Imprime uma mensagem inicial informando o início do ciclo de controle.
+    ativar_irrigacao,         % Chama a regra para ativar o sistema de irrigação, se necessário.
+    ligar_ventilacao,         % Chama a regra para ativar o sistema de ventilação, se necessário.
+    ligar_aquecimento,        % Chama a regra para ativar o sistema de aquecimento, se necessário.
+    ajustar_iluminacao,       % Chama a regra para ajustar a iluminação, se necessário.
+    controlar_co2,            % Chama a regra para controlar o nível de CO2, se necessário.
+    write('Ciclo de controle concluído.'), nl.
+
+% Inicialização do programa
+:- initialization(main).  % Define que o predicado `main/0` será chamado automaticamente quando o programa for executado.
+% O Prolog espera que o predicado chamado por :- initialization(main). termine com sucesso (true).
+% As vezes temos que garantir que todas as regras, mesmo que falhem, retornem true se não main/0 pode falhar.
+
+% Função principal do programa
+main :-
+    write('Bem-vindo ao Sistema de Controle de Estufa!'), nl,  % Imprime uma mensagem de boas-vindas ao usuário.
+    controle_estufa,        % Chama o ciclo principal de controle da estufa.
+    halt.                   % Encerra a execução do programa explicitamente.

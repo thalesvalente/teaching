@@ -23,8 +23,7 @@ ligar_aquecimento :-
     ligar_aquecimento_normal,
     !.
 ligar_aquecimento :-
-    write('Nenhuma regra de aquecimento aplicada.'), nl,
-    fail.
+    write('Nenhuma regra de aquecimento aplicada.'), nl.
     
 % Initialization
 :- initialization(main).
@@ -34,8 +33,9 @@ main :-
     % Definindo fatos iniciais
     retractall(temperatura(_)),  % Remove qualquer fato de temperatura anterior
     retractall(objetivo(_)),     % Remove qualquer objetivo anterior
-    assertz(temperatura(14)),    % Define a temperatura atual como 14°C
-    assertz(objetivo(economia_energia)),  % Define o objetivo como economia de energia
+    assertz(temperatura(18)),    % Define a temperatura atual como 14°C
+    assertz(objetivo(nao_economia_energia)),  % Define o objetivo como economia de energia
 
     % Chama o predicado para ligar o aquecimento
     ligar_aquecimento.
+    
