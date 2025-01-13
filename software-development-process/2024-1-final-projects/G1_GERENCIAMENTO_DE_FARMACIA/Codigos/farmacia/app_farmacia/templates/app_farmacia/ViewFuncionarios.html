@@ -1,0 +1,480 @@
+{% load static %} <!-- importação da pasta static, onde esta as imagens e icones -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaTech - Funcionários</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+
+        /* Estilos existentes */
+        body {
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 200;
+            font-style: normal;
+            font-variation-settings:"slnt" 0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            background-color: white;
+            color: white;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .menu {
+            position: absolute;
+            left: 299px;
+            display: flex;
+        }
+        .menu li {
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .menu a {
+            text-decoration: none;
+            color: black;
+        }
+        .menu a:hover {
+            color: #5A8CF2;
+        }
+        .content {
+            padding: 20px;
+        }
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .stock-header input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .add-product-button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-product-button:hover {
+            background-color: #333;
+        }
+        .stock-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .stock-table th, .stock-table td {
+            padding: 15px;
+            text-align: left;
+        }
+        .stock-table th {
+            background-color: #f9f9f9;
+            border-bottom: 2px solid #eee;
+        }
+        .stock-table td {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        .stock-table .icon {
+            width: 30px;
+            text-align: center;
+        }
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: black;
+        }
+        .pagination a:hover {
+            color: #5A8CF2;
+        }
+        /* Estilos do popup */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: #fff;
+            width: 1081.48px;
+            height: 573px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .popup-content h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .popup-content form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .popup-content .form-group {
+            flex: 1 1 calc(50% - 20px);
+            display: flex;
+            flex-direction: column;
+        }
+        .popup-content label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .popup-content input[type="text"], .popup-content input[type="number"], .popup-content input[type="date"], .popup-content input[type="tel"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .popup-content .form-actions {
+            flex: 1 1 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .popup-content .form-actions button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup-content .form-actions .cancel-button {
+            background-color: #ddd;
+            color: #000;
+            margin-right: 10px;
+        }
+        .popup-content .form-actions .submit-button {
+            background-color: #000;
+            color: #fff;
+        }
+        /* Estilos do popup de confirmação */
+        .confirm-popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .confirm-popup-content {
+            background-color: #fff;
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .confirm-popup-content h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .confirm-popup-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .confirm-popup-actions {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+        .confirm-popup-actions button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .confirm-popup-actions .cancel-button {
+            background-color: #ddd;
+            color: #000;
+        }
+        .confirm-popup-actions .submit-button {
+            background-color: #BD1E1E;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'imagens/logo.png' %}" alt="FarmaTech Logo">
+            <h1>FARMA TECH</h1>
+        </div>
+        <ul class="menu">
+            <li><a href="{% url 'estoque' %}">Estoque</a></li>
+            <li><a href="{% url 'funcionario' %}">Funcionários</a></li>
+            <li><a href="{% url 'home' %}">Vendas</a></li>
+        </ul>
+        <div class="user-profile">
+            <img src="{% static 'imagens/user-icon.png' %}" alt="User Profile" height="40">
+        </div>
+    </div>
+    <div class="content">
+        <div class="stock-header">
+            <button class="add-product-button" id="add-product-button">Cadastrar Funcionário</button>
+            <input type="text" placeholder="Buscar...">
+        </div>
+        <table class="stock-table">
+            <thead>
+                <tr>
+                    <th class="icon"></th>
+                    <th class="icon"></th>
+                    <th>ID</th>
+                    <th>Funcionário</th>
+                    <th>Cargo</th>
+                    <th>E-mail</th>
+                    <th>Data de admissão</th>
+                    <th>Salário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Repeat this block for each employee row -->
+                <tr data-id="01">
+                    <td class="icon"><img src="{% static 'imagens/trash.svg' %}" alt="Delete" class="delete-icon"></td>
+                    <td class="icon"><img src="{% static 'imagens/edit.svg' %}" alt="Edit" class="edit-icon"></td>
+                    <td>1</td>
+                    <td>Renato Muniz Gomes</td>
+                    <td>Farmacêutico</td>
+                    <td>renato@gmail.com</td>
+                    <td>21/06/2024</td>
+                    <td>R$ 3000</td>
+                </tr>
+                <tr data-id="01">
+                    <td class="icon"><img src="{% static 'imagens/trash.svg' %}" alt="Delete" class="delete-icon"></td>
+                    <td class="icon"><img src="{% static 'imagens/edit.svg' %}" alt="Edit" class="edit-icon"></td>
+                    <td>2</td>
+                    <td>Jhones de Sousa Soares</td>
+                    <td>Atendente</td>
+                    <td>jhones@gmail.com</td>
+                    <td>25/05/2024</td>
+                    <td>R$ 3000</td>
+                </tr>
+                <tr data-id="01">
+                    <td class="icon"><img src="{% static 'imagens/trash.svg' %}" alt="Delete" class="delete-icon"></td>
+                    <td class="icon"><img src="{% static 'imagens/edit.svg' %}" alt="Edit" class="edit-icon"></td>
+                    <td>3</td>
+                    <td>Jose Nunes de Sousa Neto</td>
+                    <td>Farmacêutico</td>
+                    <td>jose@gmail.com</td>
+                    <td>14/05/2024</td>
+                    <td>R$ 3000</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="#">&lt;</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">...</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+            <a href="#">&gt;</a>
+        </div>
+    </div>
+    <!-- Popup de Adicionar Funcionário -->
+    <div class="popup-container" id="popup-container">
+        <div class="popup-content">
+            <h2 id="popup-title">Cadastrar Funcionário</h2>
+            <form id="add-employee-form">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Nome">
+                </div>
+                <div class="form-group">
+                    <label for="dataNascimento">Data de Nascimento</label>
+                    <input type="date" id="dataNascimento" placeholder="01/01/2018">
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" placeholder="999.999.999-99">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" placeholder="(99)99999-9999">
+                </div>
+                <div class="form-group">
+                    <label for="salario">Salário</label>
+                    <input type="number" id="salario" placeholder="100,00">
+                </div>
+                <div class="form-group">
+                    <label for="cargo">Cargo</label>
+                    <input type="text" id="cargo" placeholder="Farmacêutico">
+                </div>
+                <div class="form-group">
+                    <label for="dataAdmissao">Data de Admissão</label>
+                    <input type="date" id="dataAdmissao" placeholder="01/01/2018">
+                </div>
+                <div class="form-group">
+                    <label for="contato">E-mail</label>
+                    <input type="email" id="contato" placeholder="email@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" placeholder="Endereço">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-button" id="cancelar">Cancelar</button>
+                    <button type="submit" class="submit-button">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Popup de confirmação -->
+    <div class="confirm-popup-container" id="confirm-popup-container">
+        <div class="confirm-popup-content">
+            <h2>Confirmar Exclusão</h2>
+            <p>Você tem certeza que deseja excluir este item?</p>
+            <div class="confirm-popup-actions">
+                <button class="cancel-button" id="cancel-delete">Cancelar</button>
+                <button class="submit-button" id="confirm-delete">Excluir</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let employeeId = 2; // Variável para controle do ID dos funcionários
+        let currentRowToDelete = null; // Variável para armazenar a linha atual a ser excluída
+        let currentRowToEdit = null; // Variável para armazenar a linha atual a ser editada
+
+        document.getElementById('add-product-button').addEventListener('click', function() {
+            document.getElementById('popup-title').innerText = 'Cadastrar Funcionário';
+            document.getElementById('add-employee-form').reset();
+            currentRowToEdit = null;
+            document.getElementById('popup-container').style.display = 'flex';
+        });
+
+        document.getElementById('cancelar').addEventListener('click', function() {
+            document.getElementById('popup-container').style.display = 'none';
+        });
+
+        document.getElementById('add-employee-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const cpf = document.getElementById('cpf').value;
+            const telefone = document.getElementById('telefone').value;
+            const salario = document.getElementById('salario').value;
+            const cargo = document.getElementById('cargo').value;
+            const dataAdmissao = document.getElementById('dataAdmissao').value;
+            const contato = document.getElementById('contato').value;
+            const endereco = document.getElementById('endereco').value;
+
+            if (currentRowToEdit) {
+                // Atualizar os dados do funcionário existente
+                currentRowToEdit.querySelector('td:nth-child(4)').innerText = nome;
+                currentRowToEdit.querySelector('td:nth-child(5)').innerText = cargo;
+                currentRowToEdit.querySelector('td:nth-child(6)').innerText = contato;
+                currentRowToEdit.querySelector('td:nth-child(7)').innerText = dataAdmissao;
+                currentRowToEdit.querySelector('td:nth-child(8)').innerText = salario;
+            } else {
+                // Adicionar novo funcionário
+                const newRow = document.createElement('tr');
+                newRow.setAttribute('data-id', employeeId);
+                newRow.innerHTML = `
+                    <td class="icon"><img src="{% static 'imagens/trash.svg' %}" alt="Delete" class="delete-icon"></td>
+                    <td class="icon"><img src="{% static 'imagens/edit.svg' %}" alt="Edit" class="edit-icon"></td>
+                    <td>${employeeId}</td>
+                    <td>${nome}</td>
+                    <td>${cargo}</td>
+                    <td>${contato}</td>
+                    <td>${dataAdmissao}</td>
+                    <td>${salario}</td>
+                `;
+                document.querySelector('.stock-table tbody').appendChild(newRow);
+                employeeId++;
+
+                // Adicionar eventos de clique aos ícones de exclusão e edição
+                newRow.querySelector('.delete-icon').addEventListener('click', function() {
+                    currentRowToDelete = newRow;
+                    document.getElementById('confirm-popup-container').style.display = 'flex';
+                });
+                newRow.querySelector('.edit-icon').addEventListener('click', function() {
+                    currentRowToEdit = newRow;
+                    document.getElementById('popup-title').innerText = 'Editar Funcionário';
+                    document.getElementById('nome').value = currentRowToEdit.querySelector('td:nth-child(4)').innerText;
+                    document.getElementById('cargo').value = currentRowToEdit.querySelector('td:nth-child(5)').innerText;
+                    document.getElementById('contato').value = currentRowToEdit.querySelector('td:nth-child(6)').innerText;
+                    document.getElementById('dataAdmissao').value = currentRowToEdit.querySelector('td:nth-child(7)').innerText;
+                    document.getElementById('salario').value = currentRowToEdit.querySelector('td:nth-child(8)').innerText;
+                    document.getElementById('popup-container').style.display = 'flex';
+                });
+            }
+
+            document.getElementById('popup-container').style.display = 'none';
+        });
+
+        document.getElementById('cancel-delete').addEventListener('click', function() {
+            document.getElementById('confirm-popup-container').style.display = 'none';
+            currentRowToDelete = null;
+        });
+
+        document.getElementById('confirm-delete').addEventListener('click', function() {
+            if (currentRowToDelete) {
+                currentRowToDelete.remove();
+                currentRowToDelete = null;
+            }
+            document.getElementById('confirm-popup-container').style.display = 'none';
+        });
+
+        // Adicionar evento de clique aos ícones de exclusão e edição já existentes
+        document.querySelectorAll('.delete-icon').forEach(function(icon) {
+            icon.addEventListener('click', function() {
+                currentRowToDelete = this.closest('tr');
+                document.getElementById('confirm-popup-container').style.display = 'flex';
+            });
+        });
+        document.querySelectorAll('.edit-icon').forEach(function(icon) {
+            icon.addEventListener('click', function() {
+                currentRowToEdit = this.closest('tr');
+                document.getElementById('popup-title').innerText = 'Editar Funcionário';
+                document.getElementById('nome').value = currentRowToEdit.querySelector('td:nth-child(4)').innerText;
+                document.getElementById('cargo').value = currentRowToEdit.querySelector('td:nth-child(5)').innerText;
+                document.getElementById('contato').value = currentRowToEdit.querySelector('td:nth-child(6)').innerText;
+                document.getElementById('dataAdmissao').value = currentRowToEdit.querySelector('td:nth-child(7)').innerText;
+                document.getElementById('salario').value = currentRowToEdit.querySelector('td:nth-child(8)').innerText;
+                document.getElementById('popup-container').style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+</html>

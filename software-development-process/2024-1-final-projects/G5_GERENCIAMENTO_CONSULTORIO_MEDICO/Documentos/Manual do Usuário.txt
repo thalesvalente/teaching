@@ -1,0 +1,26 @@
+Manual do Usuário: Sistema Clínica Vida Plena
+Requisitos do Sistema
+Para executar o sistema Clínica Vida Plena, seu computador deve atender aos seguintes requisitos:
+
+Sistema Operacional: Windows 10 ou superior
+Python 3.12 ou superior instalado
+Acesso à Internet para instalação de dependências
+Instalação
+Siga os passos abaixo para instalar o sistema Clínica Vida Plena em seu computador:
+
+Instale o Python: Certifique-se de que o Python 3.12 ou superior está instalado em seu sistema. Você pode baixar o Python do site oficial: https://www.python.org/downloads/.
+
+Baixe o Sistema: Faça o download do código-fonte do sistema Clínica Vida Plena através do arquivo compactado fornecido.
+
+Descompacte o Sistema (se necessário): Se você baixou um arquivo compactado, descompacte-o em uma pasta de sua escolha.
+
+Execute o Sistema: Com o Sistema descompactado, vá para o caminho \clinica-vida-plena\dist e execute o arquivo main.exe
+
+Isso iniciará a interface gráfica do sistema Clínica Vida Plena.
+
+Utilização
+Após iniciar o sistema, você será apresentado à tela de login. Use as credenciais fornecidas para acessar as funcionalidades correspondentes ao seu papel (Gerente, Médico ou Recepcionista).
+
+Gerente: admin / 123
+Médico: Med1 / 123
+Recepcionista: Recep1 / 123

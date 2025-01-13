@@ -1,0 +1,111 @@
+{% load static %} <!-- importação da pasta static, onde esta as imagens e icones -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farma Tech Login</title>
+    <style>
+
+        /* Estilos existentes */
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .logo img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: #5A8CF2;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn.primary {
+            background-color: #5A8CF2;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            color: #BD1E1E;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" style="padding: 40px;">
+        <div class="logo">
+            <img src="{% static 'imagens/farmatech-logo.png' %}" alt="Farma Tech Logo" style="width: 200px; height: 200px;">
+        </div>
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <div class="input-group">
+                <label for="username">E-mail</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn primary">Login</button>
+                <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+            </div>            
+            {% for k, v in form.errors.items %}                
+                <h3 style="color: #ca5050;">Por favor, entre com um e-mail e senha corretos.</h3>         
+            {%endfor%}
+        </form>
+    </div>
+</body>
+</html>

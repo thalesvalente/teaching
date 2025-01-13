@@ -1,0 +1,464 @@
+{% load static %}   <!-- importação da pasta static, onde esta as imagens e icones -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaTech - Estoque</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+
+        /* Estilos existentes */
+        body {
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 200;
+            font-style: normal;
+            font-variation-settings:"slnt" 0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            background-color: white;
+            color: white;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .menu {
+            position: absolute;
+            left: 299px;
+            display: flex;
+        }
+        .menu li {
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .menu a {
+            text-decoration: none;
+            color: black;
+        }
+        .menu a:hover {
+            color: #5A8CF2;
+        }
+        .content {
+            padding: 20px;
+        }
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .stock-header input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .add-product-button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-product-button:hover {
+            background-color: #333;
+        }
+        .stock-summary {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin-bottom: 20px;
+            width: 302px;
+            justify-content: left;
+        }
+        .stock-summary h1 {
+            margin: 0;
+            font-size: 1em;
+            color: #333;
+        }
+        .stock-summary p {
+            margin: 10px 0;
+            text-align: left;
+            color: #888;
+        }
+        .stock-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .stock-table th, .stock-table td {
+            padding: 15px;
+            text-align: left;
+        }
+        .stock-table th {
+            background-color: #f9f9f9;
+            border-bottom: 2px solid #eee;
+        }
+        .stock-table td {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        .stock-table .icon {
+            width: 30px;
+            text-align: center;
+        }
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: black;
+        }
+        .pagination a:hover {
+            color: #5A8CF2;
+        }
+        /* Estilos do popup */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: #fff;
+            width: 1143px;
+            height: 771px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .popup-content h2 {
+            margin-top: 0;
+        }
+        .popup-content form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .popup-content .form-group {
+            margin-bottom: 15px;
+        }
+        .popup-content .form-group.full-width {
+            flex: 1 1 100%;
+        }
+        .popup-content label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .popup-content input[type="text"], .popup-content input[type="number"], .popup-content textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .popup-content textarea {
+            resize: none;
+            height: 100px;
+        }
+        .popup-content .form-actions {
+            flex: 1 1 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .popup-content .form-actions button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup-content .form-actions #cancelar {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #000;
+            background-color: #ddd;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup-content .form-actions button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'imagens/logo.png' %}" alt="FarmaTech Logo">
+            <h1>FARMA TECH</h1>
+        </div>
+        <ul class="menu">
+            <li><a href="{% url 'estoque' %}">Estoque</a></li>
+            <li><a href="{% url 'funcionario' %}">Funcionários</a></li>
+            <li><a href="{% url 'home' %}">Vendas</a></li>
+        </ul>
+        <div class="user-profile">
+            <img src="{% static 'imagens/user-icon.png' %}" alt="User Profile" height="40">
+        </div>
+    </div>
+    <div class="content">
+        <div class="stock-header">
+            <button class="add-product-button" id="add-product-button">Adicionar Produto</button>
+            <input type="text" placeholder="Buscar...">
+        </div>
+        <div class="stock-summary">
+            <h1>Itens em estoque</h1>
+            <h2>10.353</h2>
+            <p>-8% em relação ao mês anterior</p>
+        </div>
+        <table class="stock-table">
+            <thead>
+                <tr>
+                    <th class="icon"></th>
+                    <th class="icon"></th>
+                    <th>ID</th>
+                    <th>Item</th>
+                    <th>Data de Validade</th>
+                    <th>Fornecedor</th>
+                    <th>Contato</th>
+                    <th>Quantidade</th>
+                    <th>Volume Vendas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Repeat this block for each product row -->
+                <tr>
+                    <td class="icon"><img src="{% static 'imagens/trash.svg' %}" alt="Delete" class="delete-icon"></td>
+                    <td class="icon"><img src="{% static 'imagens/edit.svg' %}" alt="Edit" class="edit-icon"></td>
+                    <td>1</td>
+                    <td>Produto A</td>
+                    <td>20/05/2025</td>
+                    <td></td>
+                    <td></td>
+                    <td>4321</td>
+                    <td>+84%</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="#">&lt;</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">...</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+            <a href="#">&gt;</a>
+        </div>
+    </div>
+    <!-- Popup de Adicionar Produto -->
+    <div class="popup-container" id="popup-container">
+        <div class="popup-content">
+            <h2>Adicionar Produto</h2>
+            <form id="add-product-form">
+                <div class="form-group full-width">
+                    <label for="productName">Nome do Produto</label>
+                    <input type="text" id="productName" placeholder="Nome">
+                </div>
+                <div class="form-group full-width">
+                    <label for="description">Descrição</label>
+                    <textarea id="description" placeholder="Composição, contra indicações..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category">Categoria</label>
+                    <input type="text" id="category" placeholder="Selecione a categoria">
+                </div>
+                <div class="form-group">
+                    <label for="unitPrice">Valor unitário</label>
+                    <input type="number" id="unitPrice" placeholder="100,00">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantidade</label>
+                    <input type="number" id="quantity" placeholder="10">
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">Data de Validade</label>
+                    <input type="text" id="expiryDate" placeholder="01/01/2018">
+                </div>
+                <div class="form-group">
+                    <label for="prescription">Precisa de receita?</label>
+                    <input type="text" id="prescription" placeholder="Sim/Não">
+                </div>
+                <div class="form-group">
+                    <label for="supplier">Fornecedor</label>
+                    <input type="text" id="supplier" placeholder="Fornecedor">
+                </div>
+                <div class="form-group">
+                    <label for="Contact">Contato</label>
+                    <input type="text" id="Contact" placeholder="email@domain.com">
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Adicionar produto</button>
+                    <button type="button" id="cancelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Popup de Editar Produto -->
+    <div class="popup-container" id="edit-popup-container">
+        <div class="popup-content">
+            <h2>Editar Produto</h2>
+            <form id="edit-product-form">
+                <div class="form-group full-width">
+                    <label for="editProductName">Nome do Produto</label>
+                    <input type="text" id="editProductName" placeholder="Nome">
+                </div>
+                <div class="form-group full-width">
+                    <label for="editDescription">Descrição</label>
+                    <textarea id="editDescription" placeholder="Composição, contra indicações..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editCategory">Categoria</label>
+                    <input type="text" id="editCategory" placeholder="Selecione a categoria">
+                </div>
+                <div class="form-group">
+                    <label for="editUnitPrice">Valor unitário</label>
+                    <input type="number" id="editUnitPrice" placeholder="100,00">
+                </div>
+                <div class="form-group">
+                    <label for="editQuantity">Quantidade</label>
+                    <input type="number" id="editQuantity" placeholder="10">
+                </div>
+                <div class="form-group">
+                    <label for="editExpiryDate">Data de Validade</label>
+                    <input type="text" id="editExpiryDate" placeholder="01/01/2018">
+                </div>
+                <div class="form-group">
+                    <label for="editPrescription">Precisa de receita?</label>
+                    <input type="text" id="editPrescription" placeholder="Sim/Não">
+                </div>
+                <div class="form-group">
+                    <label for="editSupplier">Fornecedor</label>
+                    <input type="text" id="editSupplier" placeholder="Fornecedor">
+                </div>
+                <div class="form-group">
+                    <label for="editContact">Contato</label>
+                    <input type="text" id="editContact" placeholder="email@domain.com">
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Confirmar alterações</button>
+                    <button type="button" id="editCancelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        let productId = 1; // Variável para controle do ID dos produtos
+
+        document.getElementById('add-product-button').addEventListener('click', function() {
+            document.getElementById('popup-container').style.display = 'flex';
+        });
+
+        document.getElementById('cancelar').addEventListener('click', function() {
+            document.getElementById('popup-container').style.display = 'none';
+        });
+
+        document.getElementById('add-product-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const productName = document.getElementById('productName').value;
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
+            const unitPrice = document.getElementById('unitPrice').value;
+            const quantity = document.getElementById('quantity').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const prescription = document.getElementById('prescription').value;
+            const supplier = document.getElementById('supplier').value;
+            const contact = document.getElementById('Contact').value;
+
+            const newRow = document.createElement('tr');
+            newRow.setAttribute('data-id', productId);
+            newRow.innerHTML = `
+                <td class="icon"><img src="{% static 'imagens/trash.svg' %}" alt="Delete" class="delete-icon"></td>
+                <td class="icon"><img src="{% static 'imagens/edit.svg' %}" alt="Edit" class="edit-icon"></td>
+                <td>${productId}</td>
+                <td>${productName}</td>
+                <td>${expiryDate}</td>
+                <td>${supplier}</td>
+                <td>${contact}</td>
+                <td>${quantity}</td>
+                <td></td>
+            `;
+            document.querySelector('.stock-table tbody').appendChild(newRow);
+            productId++;
+            document.getElementById('popup-container').style.display = 'none';
+            document.getElementById('add-product-form').reset();
+        });
+
+        document.querySelector('.stock-table tbody').addEventListener('click', function(e) {
+            if (e.target.classList.contains('delete-icon')) {
+                const row = e.target.closest('tr');
+                const productId = row.getAttribute('data-id');
+                const confirmation = confirm('Tem certeza que deseja excluir este produto?');
+                if (confirmation) {
+                    row.remove();
+                }
+            } else if (e.target.classList.contains('edit-icon')) {
+                const row = e.target.closest('tr');
+                const productId = row.getAttribute('data-id');
+                const productName = row.children[3].textContent;
+                const expiryDate = row.children[4].textContent;
+                const supplier = row.children[5].textContent;
+                const contact = row.children[6].textContent;
+                const quantity = row.children[7].textContent;
+
+                document.getElementById('editProductName').value = productName;
+                document.getElementById('editExpiryDate').value = expiryDate;
+                document.getElementById('editSupplier').value = supplier;
+                document.getElementById('editContact').value = contact;
+                document.getElementById('editQuantity').value = quantity;
+
+                document.getElementById('edit-popup-container').style.display = 'flex';
+
+                document.getElementById('edit-product-form').onsubmit = function(e) {
+                    e.preventDefault();
+                    row.children[3].textContent = document.getElementById('editProductName').value;
+                    row.children[4].textContent = document.getElementById('editExpiryDate').value;
+                    row.children[5].textContent = document.getElementById('editSupplier').value;
+                    row.children[6].textContent = document.getElementById('editContact').value;
+                    row.children[7].textContent = document.getElementById('editQuantity').value;
+
+                    document.getElementById('edit-popup-container').style.display = 'none';
+                };
+            }
+        });
+
+        document.getElementById('editCancelar').addEventListener('click', function() {
+            document.getElementById('edit-popup-container').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+{% load static %}  <!-- importação da pasta static, onde esta as imagens e icones -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaTech - Vendas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos existentes */
+        body {
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 200;
+            font-style: normal;
+            font-variation-settings:"slnt" 0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            background-color: white;
+            color: white;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .nav {
+            position: absolute;
+            left: 299px;
+            display: flex;
+            gap: 2rem;
+        }
+        .nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            color: #5A8CF2;
+        }
+        .user-icon img {
+            border-radius: 50%;
+            height: 40px;
+        }
+        .content {
+            display: flex;
+            justify-content: space-around;
+            padding: 2rem 1rem;
+            gap: 1rem;
+            margin-top: 80px;
+        }
+        .info-box {
+            background-color: white;
+            width: 603px;
+            height: 172px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 1rem;
+            text-align: left;
+        }
+        .info-box h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .info-box p {
+            margin: 0.5rem 0;
+            color: gray;
+        }
+        .cart-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 100px;
+        }
+        .cart {
+            background-color: white;
+            width: 850px;
+            height: 753px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+        }
+        .cart table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cart table, .cart th, .cart td {
+            border: 1px solid #ddd;
+        }
+        .cart th, .cart td {
+            padding: 0.5rem;
+            text-align: left;
+        }
+        .cart th {
+            background-color: #f2f2f2;
+        }
+        .cart .total {
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding-top: 1rem;
+        }
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        .buttons button {
+            padding: 0.5rem 1rem;
+            margin-left: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons .finalizar {
+            background-color: black;
+            color: white;
+        }
+        .buttons .cancelar {
+            background-color: #ddd;
+            color: black;
+        }
+        .client-form {
+            background-color: white;
+            width: 400px;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .client-form h3 {
+            margin-top: 0;
+        }
+        .client-form label {
+            display: block;
+            margin: 0.5rem 0 0.2rem 0;
+            font-weight: bold;
+        }
+        .client-form input {
+            width: calc(100% - 2rem);
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .icon-trash, .icon-edit, .icon-add {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .icon-trash {
+            background-image: url("{% static 'imagens/trash.svg' %}");
+            cursor: pointer;
+        }
+        .icon-edit {
+            background-image: url("{% static 'imagens/edit.svg' %}");
+            cursor: pointer;
+        }
+        .icon-add {
+            background-image: url("{% static 'imagens/add.svg' %}");
+            cursor: pointer;
+        }
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            width: 80%;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.25);
+            z-index: 1000;
+        }
+        .popup h3 {
+            margin-top: 0;
+        }
+        .popup label {
+            display: block;
+            margin: 0.5rem 0 0.2rem 0;
+            font-weight: bold;
+        }
+        .popup input, .popup textarea, .popup select {
+            width: calc(100% - 2rem);
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .popup .buttons {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .popup .buttons button {
+            padding: 0.5rem 1rem;
+            margin-left: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup .buttons .cancelar {
+            background-color: #ddd;
+            color: black;
+        }
+        .popup .buttons .adicionar {
+            background-color: #5A8CF2;
+            color: white;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Estilos adicionais para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilos específicos do PopupFuncionarioVendasAdicionarProduto */
+        .container {
+            background-color: #fff;
+            width: 100%;
+            height: auto;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group.full-width {
+            flex: 1 1 100%;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+        .form-actions {
+            flex: 1 1 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        .form-actions button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-actions button:hover {
+            background-color: #333;
+        }
+
+        /* Estilos específicos do PopupFuncionarioVendasExcluiritem */
+        .delete-popup .container {
+            background-color: #fff;
+            width: 491px;
+            height: 216px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .delete-popup p {
+            margin: 0;
+            font-size: 18px;
+        }
+        .delete-popup .form-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .delete-popup .form-actions button {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 96px;
+            height: 36px;
+        }
+        .delete-popup .form-actions .cancel {
+            background-color: #e0e0e0;
+            color: #000;
+        }
+        .delete-popup .form-actions .confirm {
+            background-color: #000;
+            color: #fff;
+        }
+        .delete-popup .form-actions .cancel:hover {
+            background-color: #d0d0d0;
+        }
+        .delete-popup .form-actions .confirm:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'imagens/logo.png' %}" alt="Farma Tech Logo">
+            <h1>Farma Tech</h1>
+        </div>
+        <nav class="nav">
+            <a href="{% url 'estoque' %}">Estoque</a>
+            <a href="{% url 'funcionario' %}">Funcionários</a>
+            <a href="{% url 'home' %}">Vendas</a>
+        </nav>
+        <div class="user-profile">
+            <img src="{% static 'imagens/user-icon.png' %}" alt="User Profile" style="height:40px; border-radius: 50%;">
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="info-box">
+            <h2>110</h2>
+            <p>Vendas Realizadas<br><span style="color: green;">+15% em relação ao dia anterior</span></p>
+        </div>
+        <div class="info-box">
+            <h2>120</h2>
+            <p>Clientes cadastrados<br><span style="color: green;">+20% em relação ao mês anterior</span></p>
+        </div>
+    </div>
+
+    <div class="cart-container">
+        <div class="cart">
+            <div class="cart-actions">
+                <div class="icon-add" onclick="openPopup()"></div> <!-- Add icon for adding items -->
+            </div>
+            <table id="cart-table">
+                <thead>
+                    <tr>
+                        <th>Ação</th>
+                        <th>Itens</th>
+                        <th>Quantidade</th>
+                        <th>Valor unitário</th>
+                        <th>Valor total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Cart is initially empty -->
+                </tbody>
+            </table>
+            <div class="total" id="total-amount">Valor total: 0,00</div>
+            <div class="buttons">
+                <button class="finalizar">Finalizar compra</button>
+                <button class="cancelar">Cancelar compra</button>
+            </div>
+        </div>
+        
+        <div class="client-form">
+            <h3>Cadastro Cliente</h3>
+            <form>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" placeholder="999.999.999-99">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" placeholder="(99)99999-9999">
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Adicionar Produto -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="popupContent">
+                <!-- Conteúdo do popup será carregado aqui -->
+                <div class="container">
+                    <h2>Adicionar Produto</h2>
+                    <form id="add-product-form">
+                        <div class="form-group full-width">
+                            <label for="productName">Nome do Produto</label>
+                            <input type="text" id="productName" placeholder="Nome">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="description">Descrição</label>
+                            <textarea id="description" placeholder="Composição, contra indicações..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Categoria</label>
+                            <input type="text" id="category" placeholder="Selecione a categoria">
+                        </div>
+                        <div class="form-group">
+                            <label for="unitPrice">Valor unitário</label>
+                            <input type="number" id="unitPrice" placeholder="100,00">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantidade</label>
+                            <input type="number" id="quantity" placeholder="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate">Data da Compra</label>
+                            <input type="text" id="expiryDate" placeholder="01/01/2024">
+                        </div>
+                        <div class="form-group">
+                            <label for="prescription">Precisa de receita?</label>
+                            <input type="text" id="prescription" placeholder="Sim/Não">
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="addProductToCart()">Adicionar produto</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Exclusão -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content delete-popup">
+            <div class="container">
+                <p id="deleteItemMessage">Deseja excluir o item?</p>
+                <div class="form-actions">
+                    <button class="cancel" onclick="closeDeletePopup()">Cancelar</button>
+                    <button class="confirm" onclick="confirmDelete()">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var currentDeleteElement = null;
+        var currentDeleteRow = null;
+
+        // Função para abrir o popup de adicionar produto
+        function openPopup() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // Função para fechar o popup de adicionar produto
+        function closePopup() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Fecha o popup de adicionar produto quando o usuário clicar fora dele
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("myModal")) {
+                closePopup();
+            }
+            if (event.target == document.getElementById("deleteModal")) {
+                closeDeletePopup();
+            }
+        }
+
+        // Fecha o popup de adicionar produto quando o usuário clicar no botão de fechar
+        document.getElementsByClassName("close")[0].onclick = function() {
+            closePopup();
+        }
+
+        // Adiciona produto ao carrinho
+        function addProductToCart() {
+            var productName = document.getElementById('productName').value;
+            var description = document.getElementById('description').value;
+            var category = document.getElementById('category').value;
+            var unitPrice = document.getElementById('unitPrice').value;
+            var quantity = document.getElementById('quantity').value;
+            var expiryDate = document.getElementById('expiryDate').value;
+            var prescription = document.getElementById('prescription').value;
+
+            if (productName && unitPrice && quantity) {
+                var table = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
+                var newRow = table.insertRow();
+
+                var cell1 = newRow.insertCell(0);
+                cell1.innerHTML = '<div class="icon-trash" onclick="promptDelete(this)"></div><div class="icon-edit" onclick="editProduct(this)"></div>';
+
+                var cell2 = newRow.insertCell(1);
+                cell2.innerHTML = productName;
+
+                var cell3 = newRow.insertCell(2);
+                cell3.innerHTML = quantity;
+
+                var cell4 = newRow.insertCell(3);
+                cell4.innerHTML = parseFloat(unitPrice).toFixed(2).replace('.', ',');
+
+                var totalPrice = (parseFloat(unitPrice) * parseFloat(quantity)).toFixed(2).replace('.', ',');
+                var cell5 = newRow.insertCell(4);
+                cell5.innerHTML = totalPrice;
+
+                updateTotalAmount(parseFloat(totalPrice.replace(',', '.')));
+                closePopup();
+            } else {
+                alert("Por favor, preencha os campos obrigatórios (Nome do Produto, Valor unitário, Quantidade).");
+            }
+        }
+
+        // Prompt para confirmar exclusão do produto
+        function promptDelete(element) {
+            currentDeleteElement = element;
+            currentDeleteRow = element.parentNode.parentNode;
+            var productName = currentDeleteRow.cells[1].innerText;
+            document.getElementById('deleteItemMessage').innerText = 'Deseja excluir o item "' + productName + '"?';
+            document.getElementById("deleteModal").style.display = "block";
+        }
+
+        // Função para fechar o popup de confirmação de exclusão
+        function closeDeletePopup() {
+            document.getElementById("deleteModal").style.display = "none";
+        }
+
+        // Função para confirmar exclusão do produto
+        function confirmDelete() {
+            var totalPrice = parseFloat(currentDeleteRow.cells[4].innerText.replace(',', '.'));
+            currentDeleteRow.remove();
+            updateTotalAmount(-totalPrice);
+            closeDeletePopup();
+        }
+
+        // Edita produto no carrinho
+        function editProduct(element) {
+            var row = element.parentNode.parentNode;
+            var productName = row.cells[1].innerText;
+            var quantity = row.cells[2].innerText;
+            var unitPrice = row.cells[3].innerText.replace(',', '.');
+
+            document.getElementById('productName').value = productName;
+            document.getElementById('quantity').value = quantity;
+            document.getElementById('unitPrice').value = unitPrice;
+
+            removeProduct(element);
+            openPopup();
+        }
+
+        // Atualiza o valor total do carrinho
+        function updateTotalAmount(amount) {
+            var totalAmountElement = document.getElementById('total-amount');
+            var currentTotal = parseFloat(totalAmountElement.innerText.split(' ')[2].replace(',', '.'));
+            var updatedTotal = currentTotal + amount;
+            totalAmountElement.innerText = 'Valor total: ' + updatedTotal.toFixed(2).replace('.', ',');
+        }
+    </script>
+
+</body>
+</html>
