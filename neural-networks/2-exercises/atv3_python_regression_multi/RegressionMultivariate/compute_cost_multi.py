@@ -23,14 +23,14 @@ def compute_cost_multi(X, y, theta):
     :return (float): Valor do custo calculado.
     """
     # get the number of training examples
-    m = y.shape[0]
+    m = 
     # compute the predictions using the linear model by formula h(θ) = X @ θ
     # where @ is the matrix multiplication operator
-    predictions = X @ theta
+    predictions = 
     # compute the error vector between predictions and actual values
     # The error is the difference between the predicted values and the actual values
     # errors = predictions - y
-    errors = predictions - y
+    errors = 
     # compute the cost as the mean squared error cost function using the formula in the docstring
-    cost = (1 / (2 * m)) * (errors.T @ errors)
+    cost = 
     return cost
