@@ -1,133 +1,126 @@
-# Trabalho Individual: Regressão Linear
+# Trabalho Individual – Regressão Linear **Multivariada**
 
 ---
 
-# ![UFMA](./ufma_logo.png)  ![Engenharia da Computação](./eng_comp_logo.png)
+![UFMA](./ufma_logo.png)&nbsp;&nbsp;&nbsp;&nbsp;![Engenharia da Computação](./eng_comp_logo.png)
 
 ---
 
-
-## Universidade Federal do Maranhão
-### Engenharia da Computação
-### Disciplina: EECP0053 - TÓPICOS EM ENGENHARIA DA COMPUTAÇÃO II - FUNDAMENTOS DE REDES NEURAIS
-### Assunto: Regressão Linear
-
-**Professor:** Dr. Thales Levi Azevedo Valente\  
-**E-mail:** thales.levi@ufma.br / thales.l.a.valente@gmail.com\  
-**Semestre:** 2025.1\
+## Universidade Federal do Maranhão  
+### Engenharia da Computação  
+### Disciplina: EECP0053 – **Tópicos em Engenharia da Computação II – Fundamentos de Redes Neurais**  
+**Professor:** Dr. Thales Levi Azevedo Valente  
+**E-mail:** <thales.levi@ufma.br> / <thales.l.a.valente@gmail.com>  
+**Semestre:** 2025.1  
 
 ---
 
 ## 🎯 Objetivos
 
-Este trabalho individual visa explorar o impacto da taxa de aprendizado (α) e da inicialização dos parâmetros (θ inicial) no comportamento do algoritmo de descida do gradiente para regressão linear, bem como a implementação dos componentes básicos da regressão linear.
+Este trabalho individual aprofunda a regressão linear **multivariada** com ênfase em **(i)** o impacto da _normalização das features_ e **(ii)** a comparação entre **Gradiente Descendente (GD)** e **Equação Normal (NE)** para estimação dos parâmetros \( \theta \).  
 
-Os objetivos específicos são:
+Objetivos específicos:
 
-- Avaliar a influência da taxa de aprendizado na convergência da função custo.
-- Analisar a importância da inicialização dos pesos (θ) e suas implicações no processo de aprendizagem.
-- Implementar os componentes fundamentais do algoritmo de regressão linear para consolidar o entendimento teórico e prático:
-    - `warm_up_exercise.py`: exercícios de aquecimentos com matriz identidade
-    - `plot_data.py`: visualização gráfica dos dados
-    - `compute_cost.py`: cálculo da função de custo J(θ)
-    - `gradient_descent.py`: execução da descida do gradiente
----
-
-## 📚 Tópicos a serem abordados
-
-### 1. Implementação e geração dos gráficos
-
-- Convergência da função de custo ao longo das iterações.
-- Ajuste da reta de regressão sobre os dados.
-- Superfície 3D da função de custo com trajetória do gradiente.
-- Contorno da função de custo com trajetória do gradiente.
-
-### 2. Experimentos comparativos
-
-#### 📌 Taxa de aprendizado (α)
-
-- Escolha três valores distintos para α (ex: 0.001, 0.01 e 0.1), sem mudar os outros parâmetros
-- Compare as curvas de convergência em um único gráfico.
-
-#### 📌 Inicialização dos pesos (θ inicial)
-
-- Fixe a taxa de aprendizado α em 0.01.
-- Teste três inicializações distintas fixas (ex: `[0,0]`, `[5,5]`, `[-5,5]`) e 3 inicializações distintas de forma aleatória.
-- Compare as trajetórias no gráfico de contorno (não esqueça de mudar os limites dos gráficos).
-
-### 3. Análise escrita 
-
-Para esta atividade, o aluno deve elaborar um texto dissertativo, formatado ABNT, explicando os achados. O aluno deve incluir
-os gráficos elaborados em ambas as atividades do ítem 2. 
-Obs > não esqueça de colocar legendas nas Figuras e explicá-las !!!!!!!!!!! 
-- Descreva o que acontece quando α é muito grande ou muito pequeno.
-- Explique a importância de uma inicialização adequada dos pesos, relacionando isso ao conceito de fine-tuning em redes neurais.
+1. **Comparar métodos de normalização**  
+   - Sem normalização  
+   - Normalização **z‑score** (`features_normalize_by_std`)  
+   - Normalização **min‑max** (`features_normalizes_by_min_max`)
+2. **Comparar métodos de otimização**  
+   - Gradiente Descendente clássico  
+   - Solução fechada pela Equação Normal
+3. **Implementar e documentar** (ou revisar) os componentes essenciais:
+   - `RegressionMultivariate/features_normalize.py`
+   - `RegressionMultivariate/compute_cost_multi.py`
+   - `RegressionMultivariate/gradient_descent_multi.py`
+   - `RegressionMultivariate/gradient_descent_multi_with_history.py`
+   - `RegressionMultivariate/normal_eqn.py`
+   - `regressao-multivariada-ex.py`
+4. **Redigir um relatório ABNT** contendo:
+   - Descrição dos experimentos e gráficos gerados
+   - Discussão crítica dos resultados
+   - Explicação do efeito da escala das features sobre GD e NE
+   - Conclusões sobre desempenho, velocidade e precisão de cada abordagem
 
 ---
 
-## 🗂️ Estrutura do Repositório GitHub
+## 📚 Tópicos de Implementação & Gráficos
+
+| Item | Conteúdo a gerar/entregar                                                                                                     |
+|------|-------------------------------------------------------------------------------------------------------------------------------|
+| 1    | **Curva de convergência** de custo do GD (uma linha por variante de normalização)                                             |
+| 2    | **Comparação direta** entre menor custo obtido por GD × NE                                                                    |
+| 3    | **Plano de regressão 3‑D** (tamanho × quartos × preço) ajustado com θ<sub>GD</sub>, sobre pontos de treino                    |
+| 4    | **Superfície** e **contorno** de \( J(\theta_1,\theta_2) \) com trajetória do GD e ponto da NE (θ normalizado)            |
+
+---
+
+## 🗂️ Estrutura Sugerida do Repositório
 
 ```
-regressao-linear-ex1_<SeuNome>/
-│
-├─ Figures/                # gráficos (.png e .svg)
+regressao-linear-multivariada_<SeuNome>/
 │
 ├─ Data/
-│   └─ ex1data1.txt
+│   └─ ex1data2.txt
 │
-├─ Functions/
-│   ├─ warm_up_exercises.py
-│   ├─ plot_data.py
-│   ├─ compute_cost.py
-│   └─ gradient_descent.py
+├─ RegressionMultivariate/
+│   ├─ __init__.py
+│   ├─ features_normalize.py
+│   ├─ compute_cost_multi.py
+│   ├─ gradient_descent_multi.py
+│   ├─ gradient_descent_multi_with_history.py
+│   └─ normal_eqn.py
 │
-├─ README.md               # descrição do projeto
-├─ regressao-linear-ex1.py # script principal
-├─ ufma_logo.png           # logo da UFMA
-├─ eng_comp_logo.png       # logo do curso
-├─ REQUIREMENTS.txt        # bibliotecas necessárrias
-├─ regressao-linear-ex1.yml# ambiente Conda, caso queria fazer uma criação automatizada com a instalação das libs necessárias
-└─ setup_env.py            # script que automatiza a criação do ambiente e instalação das libs. Caso deseje, use python setup_env.py no terminal
+├─ Figures/                 # gráficos (.png / .svg) produzidos pelo script
+│
+├─ regressao-multivariada-ex.py            # **script principal**
+├─ README.md                # **este arquivo**
+├─ ufma_logo.png
+├─ eng_comp_logo.png
+├─ requirements.txt         # dependências mínimas (numpy, matplotlib)
+├─ regressao-multi.yml      # ambiente Conda (opcional)
+└─ setup_env.py             # cria venv + instala libs a partir de requirements.txt
 ```
-
-## 🚀 Como executar o projeto
-
-### ✅ Opção 1: Usando Conda (recomendado)
-
-```bash
-conda env create -f environment.yml
-conda activate regressao-linear-ex1
-python regressao-linear-ex1.py
-```
-
-### 🐍 Opção 2: Ambiente virtual com Python puro (mais genérico)
-
-1. Certifique-se de ter um arquivo `requirements.txt` com as dependências mínimas:
-
-```txt
-numpy
-matplotlib
-```
-
-2. Execute o script de configuração automática:
-
-```bash
-python setup_env.py
-```
-
-Esse script irá:
-- Criar o ambiente virtual `regressao-linear-ex1`
-- Instalar os pacotes do `requirements.txt`
-- Mostrar como ativar o ambiente virtual (Windows, Linux ou MacOS)
-
-> O script `setup_env.py` está incluído no repositório e funciona em qualquer sistema.
-
-- Gráficos gerados ficarão na pasta `Figures/`.
-- Renomeie cada figura gerada para facilitar comparações.
 
 ---
 
-## Commits (Boas práticas – **Bônus**)
+## 🚀 Como Executar
+
+### ✅ Opção 1 — Conda (recomendado)
+
+```bash
+conda env create -f regressao-multi.yml
+conda activate regressao-multi
+python main_multi.py
+```
+
+### 🐍 Opção 2 — Ambiente virtual Python puro
+
+```bash
+python setup_env.py      # cria venv regressao-multi + pip install -r requirements.txt
+# Ative a venv conforme a instrução exibida no terminal, depois:
+python main_multi.py
+```
+
+Todos os gráficos serão salvos em `Figures/`. Renomeie-os de forma descritiva ao comparar experimentos.
+
+---
+
+## ✍️ Relatório (formato ABNT)
+
+Estrutura sugerida (não obrigatória):
+
+1. **Introdução** – problema, propósito do experimento  
+2. **Metodologia** – descrição dos métodos (GD, NE) e das estratégias de normalização  
+3. **Resultados** – inserção dos gráficos (com legendas)  
+4. **Discussão** – interpretação dos achados, comparação de custo, tempo, robustez  
+5. **Conclusões** – principais lições sobre escala das features, preferências de otimização  
+6. **Referências** – cite o material de apoio utilizado  
+
+> Dica: use subtítulos para separar GD vs NE, z‑score vs min‑max, e _sem normalização_.
+
+---
+
+## 💡 Boas Práticas de Commit (**Bônus**)
 
 Bônus extras serão concedidos pelo uso consistente dos *commit types* abaixo:
 
@@ -148,7 +141,7 @@ Bônus extras serão concedidos pelo uso consistente dos *commit types* abaixo:
 
 ## 📅 Submissão
 
-- **Data limite:** `26/05/2025` (até 11h59 Brasília)  
+- **Prazo:** **04 / 05 / 2025** (23h59 BRT)  
 - Enviar **somente** o link do repositório Git no SIGAA.  
 - Commits devem refletir participação individual; integrantes sem contribuições significativas serão desconsiderados.  
 - Tentativas de burla via histórico de commits acarretam **nota zero** para todos os envolvidos.  
@@ -158,39 +151,38 @@ Bônus extras serão concedidos pelo uso consistente dos *commit types* abaixo:
 
 ## 📋 Critérios de Avaliação
 
-| Critério                                             | Pesos  |
-|------------------------------------------------------|--------|
-| Implementação correta dos exercícios de aquecimento  | 2.0    |
-| Implementação correta e geração dos gráficos         | 2.5    |
-| Experimentos com α                                   | 0.25   |
-| Experimentos com θ                                   | 0.25   |
-| Qualidade da análise escrita                         | 3.0    |
-| Organização do código e uso do Git                   | 2.0    |
+| Critério                                                                                | Peso |
+|-----------------------------------------------------------------------------------------|------|
+| Implementação correta dos módulos Python                                                | 2.5  |
+| Geração e qualidade dos gráficos (itens 1–4)                                            | 2.0  |
+| Experimentos comparativos (GD × NE × normalizações)                                     | 1.5  |
+| Análise escrita (clareza, profundidade, formatação ABNT)                                | 3.0  |
+| Organização do repositório, README e uso adequado de Git                                | 1.0  |
 
 ---
 
-**Boa sorte!**
+**Boa sorte e bom estudo!** Qualquer dúvida, estou disponível por e‑mail ou em aula.
 
-Dúvidas, estou à disposição por e-mail ou em sala.
+---
 
-## Reconhecimentos e Direitos Autorais
+### Reconhecimentos e Direitos Autorais
 
 ```
-@autor:                [Seu Nome]  
-@contato:              [Seu Email]  
-@data última versão:   20/04/2025  
-@versão:               1.0  
-@outros repositórios:  [URLs opcionais]  
-@Agradecimentos:       Universidade Federal do Maranhão (UFMA),  
-                       Prof. Dr. Thales Levi Azevedo Valente,  
+@autor:                [Seu Nome]
+@contato:              [Seu Email]
+@data última versão:   28/04/2025
+@versão:               2.0
+@outros repositórios:  [URLs opcionais]
+@Agradecimentos:       Universidade Federal do Maranhão (UFMA),
+                       Prof. Dr. Thales Levi Azevedo Valente,
                        colegas de curso.
 ```
 
 ---
 
-## Licença (MIT)
+### Licença (MIT)
 
-> Este material é resultado de um trabalho acadêmico para a disciplina *EECP0053 - TÓPICOS EM ENGENHARIA DA COMPUTAÇÃO II - FUNDAMENTOS DE REDES NEURAIS*, semestre letivo 2025.12, curso Engenharia da Computação, UFMA.
+> Este material é resultado de um trabalho acadêmico para a disciplina *EECP0053 - TÓPICOS EM ENGENHARIA DA COMPUTAÇÃO II - FUNDAMENTOS DE REDES NEURAIS*, semestre letivo 2025.1, curso Engenharia da Computação, UFMA.
 
 ```
 MIT License

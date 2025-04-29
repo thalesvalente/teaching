@@ -1,6 +1,6 @@
-# main_multi.py
+# regressao-multivariada-ex.py
 """
-@file main_multi.py
+@file regressao-multivariada-ex.py
 @brief Multivariate linear regression exercise with gradient descent and normal equation.
 @details Este script executa um fluxo de trabalho completo para regressão linear multivariada,
           incluindo normalização de features, cálculo de parâmetros via gradiente descendente
