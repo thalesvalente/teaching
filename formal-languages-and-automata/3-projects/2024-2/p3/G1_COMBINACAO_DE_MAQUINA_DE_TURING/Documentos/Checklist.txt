@@ -1,0 +1,9 @@
+Checklist
+
+Itens solicitados e atendidos para a P2:
+	Comentar o código
+	Colocar um exemplo passo a passo da minimização de um AFD
+
+Itens solicitados e atendidos para a P3:
+	Comentar o código
+	Colocar as máquinas de Turing trabalhando em paralelo

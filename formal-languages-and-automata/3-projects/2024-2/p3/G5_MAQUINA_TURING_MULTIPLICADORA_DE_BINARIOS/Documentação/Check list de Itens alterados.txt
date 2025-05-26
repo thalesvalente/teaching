@@ -1,0 +1,5 @@
+Itens que foram alterados na P2:
+no slide:fonte,alinhamento,fundo.
+
+Itens que foram alterados na P3:
+Apresentação:explicação matemática da multiplicação de binarios

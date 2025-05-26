@@ -1,0 +1,8 @@
+Alterações sugeridas:
+
+P3:
+1. Adição de indicador do movimento de cada estado na representação em diagrama da máquina de Turing nos slides(FEITO)
+
+P2:
+1. Adição de comentários ao código principal(FEITO)
+2. Adição do exemplo executado durante a apresentação ao código(FEITO)
