@@ -1,0 +1,77 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.7 }
+
+\bibitem[{Committee on Publication Ethics (COPE)} 2023]{cope2023ai}
+\abntrefinfo{{Committee on Publication Ethics (COPE)}}{{Committee on
+  Publication Ethics (COPE)}}{2023}
+{{Committee on Publication Ethics (COPE)}. \emph{Position statement: Authorship
+  and AI tools}. 2023.
+Dispon{\'\i}vel em:
+  \url{https://publicationethics.org/cope-position-statements/ai-tools-and-authorship}.}
+
+\bibitem[{EDUCAUSE} 2023]{educause2023gai}
+\abntrefinfo{{EDUCAUSE}}{{EDUCAUSE}}{2023}
+{{EDUCAUSE}. \emph{7 Things You Should Know About Generative AI}. 2023.
+Dispon{\'\i}vel em:
+  \url{https://library.educause.edu/resources/2023/4/7-things-you-should-know-about-generative-ai}.}
+
+\bibitem[Freire 1987]{freire1987}
+\abntrefinfo{Freire}{FREIRE}{1987}
+{FREIRE, P. \emph{Pedagogia do Oprimido}. [S.l.: s.n.], 1987.}
+
+\bibitem[Geng e Trotta 2024]{geng2024style}
+\abntrefinfo{Geng e Trotta}{GENG; TROTTA}{2024}
+{GENG, M.; TROTTA, R. \emph{Is ChatGPT Transforming Academics' Writing Style?}
+  2024.
+Dispon{\'\i}vel em: \url{https://arxiv.org/abs/2404.08627}.}
+
+\bibitem[{ICMJE} 2023]{icmje2023ai}
+\abntrefinfo{{ICMJE}}{{ICMJE}}{2023}
+{{ICMJE}. \emph{Recommendations for the Use of AI in the Preparation of
+  Scientific Texts}. 2023.
+Dispon{\'\i}vel em:
+  \url{https://www.icmje.org/news-and-editorials/recommendations\_on\_ai\_14\_jun\_2023.html}.}
+
+\bibitem[Kobak et al. 2025]{kobak2025llm}
+\abntrefinfo{Kobak et al.}{KOBAK et al.}{2025}
+{KOBAK, D. et al. Delving into llm-assisted writing in biomedical publications
+  through excess vocabulary.
+\emph{Science Advances}, v.~11, n.~27, 2025.
+Dispon{\'\i}vel em: \url{https://www.science.org/doi/10.1126/sciadv.adt3813}.}
+
+\bibitem[{Nature Editorial} 2023]{nature2023groundrules}
+\abntrefinfo{{Nature Editorial}}{{Nature Editorial}}{2023}
+{{Nature Editorial}. \emph{Tools such as ChatGPT threaten transparent science;
+  here are our ground rules}. 2023.
+Dispon{\'\i}vel em: \url{https://www.nature.com/articles/d41586-023-00191-1}.}
+
+\bibitem[Thorp 2023]{thorp2023notauthor}
+\abntrefinfo{Thorp}{THORP}{2023}
+{THORP, H. Chatgpt is fun, but not an author.
+\emph{Science}, v.~379, n.~6630, p.~313, 2023.
+Dispon{\'\i}vel em: \url{https://www.science.org/doi/10.1126/science.adg7879}.}
+
+\bibitem[{UNESCO} 2023]{unesco2023diretrizes}
+\abntrefinfo{{UNESCO}}{{UNESCO}}{2023}
+{{UNESCO}. \emph{Orientações para a IA generativa na educação e na
+  pesquisa}. 2023.
+Dispon{\'\i}vel em: \url{https://unesdoc.unesco.org/ark:/48223/pf0000385963}.}
+
+\bibitem[{World Association of Medical Editors (WAME)} 2023]{wame2023recs}
+\abntrefinfo{{World Association of Medical Editors (WAME)}}{{World Association
+  of Medical Editors (WAME)}}{2023}
+{{World Association of Medical Editors (WAME)}. \emph{Chatbots, Generative AI,
+  and Scholarly Publications: WAME Recommendations}. 2023.
+Dispon{\'\i}vel em: \url{https://wame.org/page3.php?id=106}.}
+
+\bibitem[Yeadon et al. 2024]{yeadon2024ai}
+\abntrefinfo{Yeadon et al.}{YEADON et al.}{2024}
+{YEADON, W. et al. \emph{Evaluating AI and Human Authorship Quality in Academic
+  Writing through Physics Essays}. 2024.
+Dispon{\'\i}vel em: \url{https://arxiv.org/abs/2403.05458}.}
+
+\end{thebibliography}
